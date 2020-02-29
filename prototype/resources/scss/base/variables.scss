@@ -1,0 +1,45 @@
+:root{
+    // main colors
+    --primary: #6C9AF4;
+    --secondary: var(--white);
+    
+    // basic colors
+    --black: black;
+    --white: white;
+
+    // darker 
+    --primary-darker: #5980CD;
+    
+    // shadows
+    --shadow:0 0 10px 7px rgba(0, 0, 0, 0.15);
+    --text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+html {
+    /* 1rem = 10px */
+    font-size: 62.5%;
+  }
+  
+  $grid-breakpoints: (
+	xs: 0,      // Default
+	sm: 576px,  // Small screen / phone
+	md: 768px,  // Medium screen / tablet
+	lg: 992px,  // Large screen / desktop
+	xl: 1280px  // Extra large screen / wide screen
+);
+
+// $container-max-widths: (
+// 	sm: 540px,
+// 	md: 720px,
+// 	lg: 950px,
+// 	xl: 1114px
+// );
+
+// Small devices (landscape phones)
+@mixin small {@media (min-width: #{map-get($grid-breakpoints, sm)}) {@content;}}
+// Medium devices (tablets)
+@mixin tablet {@media (min-width: #{map-get($grid-breakpoints, md)}) {@content;}}
+// Large devices (desktops)
+@mixin desktop {@media (min-width: #{map-get($grid-breakpoints, lg)}) {@content;}}
+// Extra large devices (large desktops)
+@mixin widescreen {@media (min-width: #{map-get($grid-breakpoints, xl)}) {@content;}}

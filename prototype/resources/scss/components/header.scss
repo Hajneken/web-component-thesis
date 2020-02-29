@@ -1,0 +1,14 @@
+.nav__link{
+    @include transition(250ms);
+    
+    &:hover{
+        background-color: var(--primary);
+        color: var(--secondary);
+        @include transition(250ms);
+        
+        svg{
+            fill: var(--secondary);
+            
+        }
+    }
+}

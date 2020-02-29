@@ -1,0 +1,32 @@
+.timetable {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    max-width: 580px;
+    height: 680px;
+    padding: 27px 60px;
+    margin-top: 60px;
+    > *{
+        margin-bottom: 2.4rem;
+        position: relative;
+        &:not(:last-child)::after{
+          position: absolute;
+          content: "";
+          width: 60px;
+          height: 5px;
+          left: 50%;
+          bottom: -1.5rem;
+          transform: translateX(-50%);
+          background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+          border-radius: 5px;        
+        }
+    }
+    
+    h2{
+      text-align: center;
+    }
+  }
+  
+.timetable__week{
+    width: 100%;
+}
