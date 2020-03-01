@@ -1,3 +1,13 @@
 @mixin transition($time) {
     transition: all $time ease-in-out; 
 }
+
+@mixin sizing($width, $height : $width){
+    width: $width;
+    height: $height;
+}
+
+@mixin bckg-gradient($deg, $color-light, $color-dark){
+    background: linear-gradient($deg, $color-light 0%, $color-dark 100%);
+}
+

@@ -1,28 +1,7 @@
-
-
-
-
-header {
-  width: 100%;
-  height: 60px;
-  backdrop-filter: blur(14px) brightness(2.1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-nav {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  a {
-    text-decoration: none;
-    color: var(--black);
-    font-size: 1.6rem;
-    font-weight: bold;
-  }
+html{
+  // does not work in Safari
+  // https://css-tricks.com/snippets/jquery/smooth-scrolling/
+  scroll-behavior: smooth;
 }
 
 .white{
@@ -30,6 +9,7 @@ nav {
 }
 
 .hero-description{
+    z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +19,7 @@ nav {
       max-width: 524px;
     }
     
-    @include tablet(){
+    @include desktop(){
       justify-self: left;
     }
     
@@ -68,13 +48,13 @@ nav {
 
 .about__img{
     width: 100%;
-    height: 446px;
+    //height: 446px;
     
     img{
         object-fit: cover;
         width: 100%;
         border-radius: 15px;
-        box-shadow: var(--shadow);
+        box-shadow: var(--shadow-color);
     }
 }
 
@@ -99,7 +79,9 @@ footer{
   background: var(--primary-darker);
   display: flex;
   justify-content: center;
+  flex-direction: column;
   p{
+    text-align: center;
     color: var(--secondary);
     padding: 26px 0;
   }

@@ -1,14 +1,15 @@
 main {
   display: grid;
   background-color: var(--secondary);
+  overflow-x: hidden;
 }
 
 section {
-    padding: 0 20px;
-    position: relative;
+  padding: 0 20px;
+  position: relative;
   grid-column: 1/-1;
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 1190px) 1fr;
+  grid-template-columns: 1fr minmax(280px, 1190px) 1fr;
   > * {
     grid-column: 2/3;
   }
@@ -23,6 +24,20 @@ section {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  position: relative;
+  &:after{
+    z-index: 0;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.28);
+    @include desktop(){
+      display: none;
+    }
+  }
 }
 
 #hours {
@@ -35,20 +50,27 @@ section {
   @include tablet(){
     justify-items: left;
   }
-  &::before{
+
+  .timetable{
+    position: relative;
+    margin-left: 5%;
+  }
+
+  .timetable::after{
       display: none;
       @include tablet(){
           display: block;
     }
       content:"";
       position: absolute;
-      right: 0;
-      top: -47px;
+      //right: 0;
+      left: 100%;
+      top: 0;
       background: url("/img/arrow.svg"); 
       background-repeat: no-repeat;
       background-position: 30px 0px;
       height: 100%;
-      width: 50%;
+      width: 150%;
   }
 }
 
@@ -58,7 +80,7 @@ section {
 
 #contact {
     
-    *{
+    h2, p, a{
         color:white
     }
     
@@ -85,24 +107,20 @@ section {
         background-repeat: no-repeat;
         width: 100%;
         height: 280px;
-        // background-position: top;
         background-size: cover;
     }
-    
-    
-    .contact-info{
-        display: grid;
-    grid-template-columns: 1fr 1fr;
-    }
-    
-    
 
   h2 {
     grid-column: 1/-1;
     text-align: center;
-    font-size: 7rem;
-    font-weight: 900;
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 1;
     position: relative;
+    @include tablet(){
+      margin-bottom: 4rem;
+      font-size: 6.8rem;
+    }
     &::after {
       position: absolute;
       content: "";
@@ -117,28 +135,115 @@ section {
   }
 }
 
+#gallery{
+  margin: 130px 0 25px 0;
+  h3{
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 700;
+    position: relative;
+    color: var(--black);
+    &:after{
+      position: absolute;
+      content: "";
+      width: 41px;
+      height: 4px;
+      left: 0;
+      bottom: -1rem;
+      background-color: var(--black);
+      border-radius: 5px;
+    }
+  }
+}
+
 article{
-    display: grid;
+  display: grid;
+  grid-gap: 4rem;
+  grid-auto-flow: dense;
+  align-items: center;
+  margin-top: 3.6rem;
     // grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
-    grid-gap: 8rem;
+
+  @include tablet(){
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: dense;
-    align-items: center;
+    grid-gap: 8rem;
+  }
+
     
     .about__img{
+      @include tablet(){
         grid-row: 1/-1;
+      }
+
     }
     
     h2{
-        font-size: 4rem;
+        font-size: 2.4rem;
         font-weight: 800;
+        line-height: 1;
+      @include tablet(){
+        font-size: 3.2rem;
+      }
     }
     
     p{
-        font-size: 2.8rem;
+      font-size: 1.6rem;
+      @include tablet(){
+        font-size: 1.8rem;
+      }
     }
 
 }
+
+.contact-grid{
+  z-index: 10;
+  margin-top: -110px;
+  @include tablet(){
+    margin-top: 0;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 3rem 0;
+}
+
+.contact-info__link{
+  font-weight: 600;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  text-shadow: var(--text-shadow);
+
+  @include tablet{
+    font-size: 2.4rem;
+  }
+
+  .svg-icon{
+    @include tablet{
+      font-size: 2.4rem;
+    }
+    @include sizing(20px);
+    margin-right: 20px;
+    @include transition(150ms);
+  }
+
+  &:hover, &:focus{
+    .svg-icon{
+      transform: scale(1.05);
+      @include transition(150ms);
+      //animation: bounce;
+    }
+  }
+}
+
 
 
 

@@ -1,0 +1,19 @@
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-gap: 20px;
+}
+
+.gallery__img{
+  @include sizing(100%);
+  min-height: 85px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: var(--shadow-color);
+  @include transition(150ms);
+  &:hover{
+    transform: scale(1.05);
+    @include transition(150ms);
+  }
+}

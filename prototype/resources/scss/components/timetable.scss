@@ -1,11 +1,15 @@
 .timetable {
     background: white;
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-color);
     max-width: 580px;
-    height: 680px;
-    padding: 27px 60px;
+  padding: 20px 30px;
+  height: max-content;
+  margin-bottom: 110px;
     margin-top: 60px;
+  @include small(){
+    padding: 27px 60px;
+  }
     > *{
         margin-bottom: 2.4rem;
         position: relative;
@@ -24,6 +28,9 @@
     
     h2{
       text-align: center;
+      @include small(){
+        font-size: 3.8rem;
+      }
     }
   }
   
