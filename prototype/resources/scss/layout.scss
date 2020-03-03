@@ -46,6 +46,7 @@ section {
   grid-column: 1/-1;
   background-image: url("/img/transition-top.svg");
   background-repeat: no-repeat;
+  padding-bottom: 10rem;
   
   @include tablet(){
     justify-items: left;
@@ -137,6 +138,9 @@ section {
 
 #gallery{
   margin: 130px 0 25px 0;
+  @include widescreen(){
+    margin: 240px 0 100px 0;
+  }
   h3{
     font-size: 4rem;
     line-height: 1.2;
@@ -150,7 +154,8 @@ section {
       height: 4px;
       left: 0;
       bottom: -1rem;
-      background-color: var(--black);
+      //background-color: var(--black);
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
       border-radius: 5px;
     }
   }
@@ -181,9 +186,23 @@ article{
         font-size: 2.4rem;
         font-weight: 800;
         line-height: 1;
+        position: relative;
+
       @include tablet(){
         font-size: 3.2rem;
       }
+
+      &:after{
+        position: absolute;
+        content: "";
+        width: 41px;
+        height: 4px;
+        left: 0px;
+        bottom: -1rem;
+        border-radius: 5px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+      }
+
     }
     
     p{
@@ -210,11 +229,28 @@ article{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   margin: 3rem 0;
+  position: relative;
+  padding: 30px;
+  &:before{
+    left: 0;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    //background: var(--primary-darker);
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+    border-radius: 15px;
+    z-index: 0;
+    box-shadow: var(--shadow);
+    @include tablet(){
+      height: 80%;
+    }
+  }
 }
 
 .contact-info__link{
+  z-index: 1;
   font-weight: 600;
   font-size: 1.8rem;
   display: flex;
@@ -226,9 +262,16 @@ article{
     font-size: 2.4rem;
   }
 
+  @include widescreen{
+    font-size: 3.2rem;
+  }
+
   .svg-icon{
     @include tablet{
       font-size: 2.4rem;
+    }
+    @include widescreen(){
+      @include sizing(3.2rem);
     }
     @include sizing(20px);
     margin-right: 20px;

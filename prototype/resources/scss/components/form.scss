@@ -106,9 +106,15 @@
   box-shadow: var(--shadow);
   grid-column: 1/-1;
   font-size: 1.8rem;
+  @include transition(200ms);
 
   @include tablet(){
     font-size: 2.4rem;
     padding: 1.2rem 1.5rem;
+  }
+
+  &:hover{
+    transform: scale(1.08);
+    @include transition(200ms);
   }
 }

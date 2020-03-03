@@ -19,7 +19,7 @@ header {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 60px;
   @include tablet(){
-    grid-template-columns: 1fr repeat(3, 100px) 1fr 100px 1fr;
+    grid-template-columns: 4fr repeat(4, 100px) 1fr;
   }
 
   .nav__link{
