@@ -174,7 +174,6 @@ article{
     grid-gap: 8rem;
   }
 
-    
     .about__img{
       @include tablet(){
         grid-row: 1/-1;

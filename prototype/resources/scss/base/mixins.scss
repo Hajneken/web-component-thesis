@@ -1,5 +1,5 @@
 @mixin transition($time) {
-    transition: all $time ease-in-out; 
+    transition: all $time ease-in-out;
 }
 
 @mixin sizing($width, $height : $width){
