@@ -8,7 +8,7 @@ import {Nav} from './styled';
 const Navigation = () => {
 
     return(
-        <Nav className="main-nav">
+        <Nav>
             <a className="nav__link" href="#hours">
                 <svg className="svg-icon" enableBackground="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="386" cy="210" r="20"/>

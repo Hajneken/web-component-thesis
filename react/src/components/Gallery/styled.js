@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 export const StyledGallery = styled.div`
 
+.gallery__img{
+  &:hover, &:focus{
+    box-shadow: 0 0 7px 7px rgba(89, 128, 205, 0.5);  
+  }
+}
+
 .gallery__fullscreen{
             z-index: 1000;
             position: fixed;
@@ -87,7 +93,6 @@ transform: translateY(-50%);
 }
             
           
-            //https://jsramblings.com/how-to-use-media-queries-with-styled-components/
             button{
             position: absolute;
             right: 0;
@@ -108,14 +113,16 @@ transform: translateY(-50%);
               filter: invert(1) drop-shadow( 0 0 10px rgba(0,0,0,0.3));
               }
             
-            &:hover{
+            &:hover, &:focus{
             background-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 7px 7px rgba(89, 128, 205, 0.5); 
+            
             img{
-
                 transform: scale(1.2);
                 filter: invert(1); 
-              
             }
+            
             }
             
             @media only screen and (min-width: 600px) {

@@ -23,7 +23,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-h1,
+/* h1,
 h2,
 p {
   margin: 0;
@@ -581,4 +581,4 @@ footer p {
 footer .author {
   color: var(--secondary);
   text-decoration: none;
-  font-weight: bold; }
+  font-weight: bold; } */

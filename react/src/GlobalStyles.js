@@ -331,7 +331,7 @@ article p {
 
 header {
   width: 100%;
-  height: 60px;
+  height: 65px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -339,69 +339,8 @@ header {
 @media (min-width: 768px) {
   header {
     top: 0;
-    bottom: unset; } }
-
-.main-nav {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 60px; }
-@media (min-width: 768px) {
-  .main-nav {
-    grid-template-columns: 4fr repeat(4, 100px) 1fr; } }
-@media (min-width: 768px) {
-  .main-nav .nav__link:first-child {
-    grid-column: 2/3; } }
-@media (min-width: 768px) {
-  .main-nav .nav__link:last-child {
-    grid-column: -2/-3; } }
-
-.nav__link {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0.5rem;
-  transition: all 250ms ease-in-out;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: var(--black);
-  font-weight: 700; }
-.nav__link:after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-darker) 100%); }
-.nav__link:hover, .nav__link.active {
-  transition: all 250ms ease-in-out;
-  color: var(--secondary); }
-.nav__link:hover:after, .nav__link.active:after {
-  opacity: 1;
-  transition: all 250ms ease-in-out; }
-.nav__link:hover .svg-icon, .nav__link.active .svg-icon {
-  fill: var(--secondary);
-  animation: bounce 150ms; }
-.nav__link .svg-icon {
-  fill: var(--primary);
-  flex: 2; }
-.nav__link span {
-  flex: 1; }
-
-@keyframes bounce {
-  0% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.09); }
-  100% {
-    transform: scale(1); } }
+    bottom: unset; } 
+    }  
 
 .contact-form {
   position: relative;
@@ -507,12 +446,14 @@ header {
   border-radius: 15px;
   box-shadow: var(--shadow-color);
   transition: all 150ms ease-in-out; }
-.gallery__img:hover {
+.gallery__img:hover, .gallery__img:focus{
+  outline: none;
   transform: scale(1.05);
   transition: all 150ms ease-in-out; }
 
 html {
-  scroll-behavior: smooth; }
+  scroll-behavior: smooth;
+   }
 
 .white {
   color: var(--white); }

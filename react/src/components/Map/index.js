@@ -5,27 +5,26 @@ const Map = () => {
     // const [scriptLoaded, setScriptLoaded] = useState(false)
 
     // useEffect(()=>{
-        // const script = document.createElement("script");
-        // script.src = 'https://api.mapy.cz/loader.js';
-        // script.async = true;
-        // document.head.appendChild(script);
-
-        // script.addEventListener("load", onScriptLoad)
-
+    //     const script = document.createElement('script');
+    //     script.src = "https://api.mapy.cz/loader.js";
+    //     script.async = true;
+    //     script.addEventListener('load', window.Loader.load());
     // }, [])
 
-    // const onScriptLoad = () => {
 
-        // doIt(window.Loader.load());
+    const loadScript = () => {
+        
 
-        // };
-
-    const doIt = (sideEffect) => {
-        // var stred = this.SMap.Coords.fromWGS84(14.41, 50.08);
-        // var mapa = new this.SMap(this.JAK.gel("mapa"), stred, 10);
-        // this.mapa.addDefaultLayer(this.SMap.DEF_BASE).enable();
-        // this.mapa.addDefaultControls();
+        // document.head.appendChild(script);
     }
+
+    const onScriptLoaded = () => {
+        // Loader.async = true;
+        // Loader.load(null, null, () => {
+        //     console.log('Loaded')
+        //     });
+        };
+
 
 
     // const createMap = () => {
@@ -51,9 +50,13 @@ const Map = () => {
             aria-hidden="false"
             tabIndex="0" />
 
+        // <iframe frameBorder="0" style={{ width: "100%", height: "450"}}
+        //         src="https://www.google.com/maps/embed/v1/place?q=48.9839184,14.4338097,17&amp;key=AIzaSyCc3zoz5TZaG3w2oF7IeR-fhxNXi8uywNk" />
+    
         // <>
-        // <div id="mapa" style={{width:'100%', height:466}}></div>
-        // </>
+
+
+       // </>
 
 
 
