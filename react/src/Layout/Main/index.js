@@ -13,8 +13,33 @@ import bus from   '../../Assets/svg/bus.svg'
 import about from '../../Assets/img/veterinar.jpg'
 import MessageForm from "../../components/MessageForm";
 
+//img
+import ambulance from "../../Assets/img/ambulance.jpg";
+import room1 from "../../Assets/img/cekarna1.jpg";
+import room2 from "../../Assets/img/cekarna2.jpg";
+import ordinace from "../../Assets/img/ordinace.jpg";
+
 
 const Main = () => {
+    
+    const galleryImages =[
+        {
+          src: ambulance,
+          alt: "Ambulance"
+        },
+        {
+          src: room1,
+          alt: "Čekárna"
+        },
+        {
+          src: room2,
+          alt: "Čekárna z pohledu od vchodových dveří"
+        },
+        {
+          src: ordinace,
+          alt: "Ordinace s veterinářem"
+        }
+      ];
 
     return(
         <>
@@ -55,14 +80,14 @@ const Main = () => {
                         <span>V. Volfa 45, České Budějovice</span></a>
                         <a className="contact-info__link"
                            href="#end">
-                            <img className="svg-icon" src={bus} alt="Ikona Autobusu"/>
+                            <img className="svg-icon" src={bus} alt="Ikona Autobusové zastávky"/>
                         <span>Jaroslava Bendy</span></a>
                     </div>
                     <MessageForm />
                 </div>
             </Section>
             <section id="gallery">
-                <Gallery />
+                <Gallery images={galleryImages} />
             </section>
         </>
     )

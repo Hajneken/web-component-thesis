@@ -2,25 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { StyledGallery } from "./styled";
 
-//img
-import ambulance from "../../Assets/img/ambulance.jpg";
-import room1 from "../../Assets/img/cekarna1.jpg";
-import room2 from "../../Assets/img/cekarna2.jpg";
-import ordinace from "../../Assets/img/ordinace.jpg";
-
 //SVG
 import close from "../../Assets/svg/close.svg";
 import galleryArrow from "../../Assets/svg/galleryArrow.svg";
 
 const Gallery = props => {
-  // const imgArr = props.images;
+  const imgArr = props.images;
 
-  // current target when not false
   const [opened, setOpened] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [previousActiveElement, setPreviousActiveElement] = useState(null);
+  const [currentFocus, setCurrentFocus] = useState(null);
 
   const closeRef = useRef();
+  const prevRef = useRef();
+  const nextRef = useRef(); 
   
   //   When opened prevent background scroll and
   //   reference the previous active element to return
@@ -33,34 +29,18 @@ const Gallery = props => {
     //   focus back
       previousActiveElement && previousActiveElement.focus()
     }
-    console.log(previousActiveElement)
-  });
-   
-
-
-  const imgArr = [
-    {
-      src: ambulance,
-      alt: "Ambulance"
-    },
-    {
-      src: room1,
-      alt: "Čekárna"
-    },
-    {
-      src: room2,
-      alt: "Čekárna z pohledu od vchodových dveří"
-    },
-    {
-      src: ordinace,
-      alt: "Ordinace s veterinářem"
-    }
-  ];
+  }, [opened, previousActiveElement] );
+  
+//   only fire when the currentFocus changes 
+  useEffect(() => {
+    !!currentFocus && currentFocus.current.focus();
+  },[currentFocus])
 
   //   Loop through array of images to find the index of searched image
   const initIndex = target => {
     for (let i = 0; i < imgArr.length; i++) {
       if (imgArr[i].alt === target.alt) {
+          console.log(i);
         return i;
       } else {
       }
@@ -70,9 +50,9 @@ const Gallery = props => {
   const handleOpen = e => {
     if (!opened) {
       setPreviousActiveElement(e.currentTarget);
-      setCurrentIndex(initIndex(e.currentTarget));
+      setCurrentIndex(initIndex(e.currentTarget));      
       setOpened(e.currentTarget);
-      closeRef.current.focus();
+      setCurrentFocus(closeRef);
 
       gsap.fromTo(
         ".gallery__fullscreen",
@@ -85,9 +65,9 @@ const Gallery = props => {
   };
 
   const handleClose = e => {
-    // e.stopPropagation();
     setOpened(false);
     setCurrentIndex(null);
+    setCurrentFocus(null);
     gsap.fromTo(
       ".gallery__fullscreen",
       { opacity: 1, x: 0 },
@@ -118,18 +98,61 @@ const Gallery = props => {
   };
 
   const handleKeyPress = e => {
-    if (opened) {
-      if (e.key === "Escape") {
-        handleClose();
+    if (!!opened) {
+        switch(e.key) {
+            case "Escape":
+                handleClose();
+              break;
+            case "ArrowRight":
+                handleNext();
+              break;
+            case "ArrowLeft":
+                handlePrev();
+                break;            
+            case "Tab":
+                handleFocusChange(e);
+                break;
+            default:
+                break;
+          } 
+    } else {
+        (e.key === 'Enter') && handleOpen(e);
       }
-      if (e.key === "ArrowRight") {
-        handleNext();
-      }
-      if (e.key === "ArrowLeft") {
-        handlePrev();
-      }
-    }
   };
+  
+// prevent deafult action and watch if shift is pressed
+  const handleFocusChange = (e) => {
+    e.preventDefault();
+    if (!e.shiftKey){
+        switch(currentFocus){
+            case closeRef:
+                setCurrentFocus(prevRef);
+                break;
+            case prevRef:
+                setCurrentFocus(nextRef);
+                break;
+            case nextRef:
+                setCurrentFocus(closeRef);
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch(currentFocus){
+            case closeRef:
+                setCurrentFocus(nextRef);
+                break;
+            case prevRef:
+                setCurrentFocus(closeRef);
+                break;
+            case nextRef:
+                setCurrentFocus(prevRef);
+                break;
+            default:
+                break;
+    }
+  }
+}
 
   return (
     <>
@@ -138,38 +161,47 @@ const Gallery = props => {
         fullScreen={!!opened}
         className="gallery"
         aria-label="Galerie veterinární ambulance"
-        onKeyDown={handleKeyPress}
       >
-        <div className="gallery__fullscreen">
+        <div onKeyDown={handleKeyPress}
+            aria-hidden={!opened}
+            role="dialog"
+            className="gallery__fullscreen"             
+            style={!opened ? {opacity:"0"} : {opacity:'1'}}
+            >
           <div className="gallery__img-wrap">
           <img
+              aria-labelledby="galleryImgLabel"
               className="gallery__img-fs"
               src={opened ? imgArr[currentIndex].src : ""}
               alt={opened ? imgArr[currentIndex].alt : ""}
             />
             <button
-              aria-label="Další obrázek"
+              onClick={handleClose}
+              aria-label="Zavřít galerii"
+              tabIndex={!opened ? -1 : 0}
+              ref={closeRef}
+            >
+              <img src={close} alt="" />
+            </button>
+            <button
+              aria-label="Předchozí obrázek"
               onClick={handlePrev}
+              tabIndex={!opened ? -1 : 0}
+              ref={prevRef}
               className="left"
             >
               <img src={galleryArrow} alt="" />
             </button>
             <button
-              aria-label="Předchozí obrázek"
               onClick={handleNext}
+              tabIndex={!opened ? -1 : 0}
+              aria-label="Další obrázek"
+              ref={nextRef}
               className="right"
             >
               <img src={galleryArrow} alt="" />
             </button>
-            <button
-              tabIndex="0"
-              onClick={handleClose}
-              aria-label="Zavřít galerii"
-              ref={closeRef}
-            >
-              <img src={close} alt="" />
-            </button>
-            <p className="img__label" aria-roledescription="Popis obrázku">
+            <p id="galleryImgLabel" className="img__label">
               {opened ? imgArr[currentIndex].alt : ""}
             </p>
             <p className="img__count">
@@ -180,6 +212,7 @@ const Gallery = props => {
         {imgArr.map(el => (
           <img
             onClick={handleOpen}
+            onKeyDown={handleKeyPress}
             tabIndex="0"
             src={el.src}
             alt={el.alt}

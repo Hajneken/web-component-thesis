@@ -19,7 +19,6 @@ export const StyledGallery = styled.div`
             width: 100%;
             background: rgba(0,0,0,0.7);
             
-            
             .gallery__img-wrap{
               box-shadow: var(--shadow-color);
               position: absolute;
@@ -33,12 +32,6 @@ export const StyledGallery = styled.div`
               background: linear-gradient(3deg,var(--primary) 0%,#ffffff 100%);
               display: flex;
               justify-content: center;
-              
-           
-       //@media only screen and (aspect-ratio: 575/422  ) {
-       //max-width: 88vw;
-       //width: unset;
-       //}
               
             }
             
@@ -81,18 +74,17 @@ export const StyledGallery = styled.div`
             }
             
             .left{
-left: 0;
-top: 50%;
-transform: translateY(-50%) rotate(180deg);
-}
-
-.right{
-right: 0;
-top: 50%;
-transform: translateY(-50%);
-}
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            }
             
-          
+            .right{
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            }
+            
             button{
             position: absolute;
             right: 0;
@@ -116,7 +108,7 @@ transform: translateY(-50%);
             &:hover, &:focus{
             background-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 7px 7px rgba(89, 128, 205, 0.5); 
+            box-shadow: 0 0 7px 4px rgba(89,128,205,0.5);
             
             img{
                 transform: scale(1.2);
@@ -130,11 +122,6 @@ transform: translateY(-50%);
               height: 50px;
               padding: 1rem;
             }
-            
-            
-              
-              
-           
             }    
        }
        

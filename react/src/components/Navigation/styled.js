@@ -27,7 +27,7 @@ const Nav = styled.nav`
     color: var(--black);
     font-weight: 700;
     transition: ${transition};
-    filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.15));
+    box-shadow: 0 0 10px 7px rgba(89,128,205,0.15);
     
     @media (min-width: 768px) {
      &:first-child{
@@ -50,8 +50,8 @@ const Nav = styled.nav`
       left: 0;
       top: 0;
       opacity: 1;
-      z-index: -1;  
-      background: linear-gradient( 180deg,#ffffff 0%,#eef0f4 100% );
+      z-index: 1;  
+      background: linear-gradient( 180deg,#ffffff 0%,#eef0f4 100%);
     }
     
     &:after {
@@ -62,7 +62,7 @@ const Nav = styled.nav`
       left: 0;
       top: 0;
       opacity: 0;
-      z-index: -1;
+      z-index: 2;
       background: linear-gradient(
         180deg,
         var(--primary) 0%,
@@ -70,7 +70,7 @@ const Nav = styled.nav`
       );
     }
     
-    &:hover {
+    &:hover, &.active {
         animation: bounce 150ms; 
         background: transparent;
         color: var(--secondary);
@@ -91,6 +91,11 @@ const Nav = styled.nav`
     .svg-icon { 
       fill: var(--primary);
       height: 45%;
+      z-index: 3;
+    }
+    
+    span{
+        z-index: 3;
     }
 
   }
