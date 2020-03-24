@@ -12,7 +12,9 @@ const handleBackground = (id) => {
         case 'home':
             return `background-image: url(${hero});`;
         case 'hours':
-            return `background-image: url(${transitionTop});`;
+            return `
+            background-image: url(${transitionTop});
+            `;
         case 'contact':
             return  handlePseudo(id);
     }
@@ -24,10 +26,12 @@ const handlePseudo = (id) => {
             return(`
             &:before{
              background: url(${contactTop});
+             filter: brightness(0.961) var(--filter-shadow);
              }
              
              &:after{
              background: url(${contactBottom});
+             filter: brightness(0.961) var(--filter-shadow);
              }`);
     }
 }

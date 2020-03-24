@@ -58,7 +58,7 @@ const Main = () => {
                             <strong> koček</strong> a dalších <strong>malých zvířat</strong>. Nabízené služby zahrnují drobné
                             úkony jako <strong>očkování</strong>, <strong>čipování</strong> nebo <strong>odčervení</strong>.
                             Dále poskytujeme <strong>laboratorní</strong> a <strong>mikroskopická</strong> vyšetření a drobné
-                            <strong>chirurgické zákroky</strong>.</p></div>
+                            <strong> chirurgické zákroky</strong>.</p></div>
                     <div className="about__img">
                         <img src={about} alt="Veterinářka Dana Zemancová" />
                     </div>

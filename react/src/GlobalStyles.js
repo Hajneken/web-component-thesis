@@ -2,14 +2,17 @@ import {createGlobalStyle} from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
  :root {
-  --primary: #6C9AF4;
+   /* --primary: #6C9AF4; */
+  --primary: #6894ea;
   --secondary: var(--white);
   --black: black;
   --white: white;
-  --primary-darker: #5980CD;
+  --primary-darker: #567bc5;
   --shadow: 0 7px 6px 0px rgba(0, 0, 0, 0.1);
   --shadow-color: 0 0 10px 7px rgba(89, 128, 205, 0.15);
-  --text-shadow: 1px 1px rgba(0, 0, 0, 0.1); }
+  --text-shadow: 1px 1px rgba(0, 0, 0, 0.1); 
+  --filter-shadow: drop-shadow(0px 0px 6px rgba(89,128,205,0.15));
+  }
 
 html {
   /* 1rem = 10px */
@@ -452,7 +455,8 @@ header {
   transition: all 150ms ease-in-out; }
 
 html {
-  scroll-behavior: smooth;
+  ${'' /* not supported in Safari */}
+  ${'' /* scroll-behavior: smooth; */}
    }
 
 .white {

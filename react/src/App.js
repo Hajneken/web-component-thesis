@@ -10,7 +10,7 @@ import Footer from "./Layout/Footer"
 const App = () => {
   return (
     <>
-        <GlobalStyles/>
+      <GlobalStyles/>
       <Header />
         <Main />
       <Footer />
