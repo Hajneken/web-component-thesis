@@ -1,37 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
+import {Form, Button} from './styled';
+
+import Input from './Input';
+
+import submittedSVG from "../../Assets/svg/submitted.svg";
 
 const MessageForm = () => {
+    
+    // Jednoduchý formulář 
+    // 1. 2 inputy - email, předmět
+    // 2. textarea - samotný text 
+    // 3. button - submit 
+    //  ?captcha? 
+    // 
+    // https://docs.netlify.com/forms/notifications/
+    //  sent from formresponses@netlify.com
+    
+    // https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/#form-handling-with-a-stateful-react-form
+    
+    const [submitted, setSubmitted] = useState(false);
+    const [valid , setValid] = useState(null);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(!submitted);
+    }
+    
+    // handleSubmit = e => {
+    //     fetch("/", {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //       body: encode({ "form-name": "contact", ...this.state })
+    //     })
+    //       .then(() => alert("Success!"))
+    //       .catch(error => alert(error));
+  
+    //     e.preventDefault();
+    //   };
 
     return (
-        <form className="contact-form" action="#">
-            <label className="contact-form__field" htmlFor="name">
-                <input
-                    required
-                    className="contact-form__input"
-                    pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
-                    id="name"
-                    name="name"
-                    type="text" />
-                    <span>Jméno</span>
-            </label>
-            <label className="contact-form__field" htmlFor="email">
-                <input required
-                       className="contact-form__input"
-                       id="email"
-                       name="email"
-                       type="email" />
-                    <span>E-mail</span>
-            </label>
-            <label className="contact-form__field" htmlFor="message">
-                <textarea required
-                          pattern=".+"
-                          className="contact-form__text-area"
-                          name="message" id="message" cols="30"
-                          rows="10"/>
-                <span>Zpráva</span>
-            </label>
-            <button className="contact-form__btn" type="submit">Odeslat</button>
-        </form>
+        <Form action="#" onSubmit={handleSubmit} method="POST" data-netlify="true">
+    
+           { !submitted ? <>
+           <Input element="input" type="email">e-mail</Input>
+           <Input element="input">Předmět zprávy</Input>
+           <Input element="textarea">Vaše zpráva</Input>
+           <p>Odesláním souhlasíte se <a>zpracováním osobních údajů</a>.</p>
+           <Button>Odeslat</Button>
+            </>
+            :
+            <>
+            <h3>Děkujeme Vám za zprávu!</h3>
+            <img src={submittedSVG} alt=""/>
+            <p>Brzy se Vám ozveme</p>
+            </>
+            }
+        </Form>
         )
 }
 

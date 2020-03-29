@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
+import gsap from 'gsap';
+
 import Gallery from "../../components/Gallery";
 import Timetable from "../../components/Timetable";
+import MessageForm from "../../components/MessageForm";
 
 import {Section} from "../Section/styled";
 
@@ -11,13 +14,13 @@ import bus from   '../../Assets/svg/bus.svg'
 
 //JPG
 import about from '../../Assets/img/veterinar.jpg'
-import MessageForm from "../../components/MessageForm";
 
 //img
 import ambulance from "../../Assets/img/ambulance.jpg";
 import room1 from "../../Assets/img/cekarna1.jpg";
 import room2 from "../../Assets/img/cekarna2.jpg";
 import ordinace from "../../Assets/img/ordinace.jpg";
+import hero from '../../Assets/img/zahlavi.png'
 
 
 const Main = () => {
@@ -40,12 +43,19 @@ const Main = () => {
           alt: "Ordinace s veterinářem"
         }
       ];
+      
+      useEffect(()=>{
+          gsap.fromTo(['.hero-description__header', '.hero-description__subheader'], {opacity:0, y:50}, {opacity:1, y:0, stagger:0.6, duration:2})
+      }, [])
 
     return(
-        <>
+        <main>
             <Section id="home" className="p-section">
-                <div className="hero-description"><h1>Veterinární ambulance na máji</h1>
-                    <p>Prevence a léčba malých zvířat</p></div>
+                <div 
+               
+                className="hero-description"><h1 class="hero-description__header">Veterinární ambulance na máji</h1>
+                    <p class="hero-description__subheader">Prevence a léčba malých zvířat</p></div>
+                    <img className="hero" src={hero} alt=''/>
             </Section>
             <Section id="hours">
                 <Timetable />
@@ -86,10 +96,10 @@ const Main = () => {
                     <MessageForm />
                 </div>
             </Section>
-            <section id="gallery">
+            <Section id="gallery">
                 <Gallery images={galleryImages} />
-            </section>
-        </>
+            </Section>
+        </main>
     )
 }
 

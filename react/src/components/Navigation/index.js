@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef, createRef } from "react";
 
+import gsap from "gsap";
+
 import { Nav, NavigationLink } from "./styled";
 // import NavLink from './NavLink'
 
-
 const Navigation = () => {
-  // routing = směrování, comment about the possibility of hash router
+  // routing = směrování, possibility of hash router
   // HTML 5 history API
 
   const [linkActive, setLinkActive] = useState(null);
-
-  const [sectionRefs, setSectionRefs] = useState(null);
 
   const links = [
     {
@@ -59,22 +58,6 @@ const Navigation = () => {
       ]
     },
     {
-      targetId: "end",
-      label: "Kudy k nám",
-      svg: [
-        <svg
-          className="svg-icon"
-          enableBackground="new 0 0 426.667 426.667"
-          version="1.1"
-          viewBox="0 0 426.67 426.67"
-          xmlSpace="preserve"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="m213.33 0c-82.453 0-149.33 66.88-149.33 149.33 0 112 149.33 277.33 149.33 277.33s149.33-165.33 149.33-277.33c1e-3 -82.453-66.879-149.33-149.33-149.33zm0 202.67c-29.44 0-53.333-23.893-53.333-53.333s23.893-53.334 53.333-53.334 53.333 23.893 53.333 53.333-23.893 53.334-53.333 53.334z" />
-        </svg>
-      ]
-    },
-    {
       targetId: "contact",
       label: "Kontakt",
       svg: [
@@ -91,6 +74,22 @@ const Navigation = () => {
           <path d="m384.73 174.79c-3.214-3.447-8.614-3.637-12.062-0.422-3.447 3.214-3.637 8.614-0.422 12.062l87.39 93.611c3.214 3.447 8.614 3.637 12.062 0.422 3.447-3.214 3.637-8.614 0.422-12.062l-87.39-93.611z" />
         </svg>
       ]
+    },
+    {
+      targetId: "end",
+      label: "Kudy k nám",
+      svg: [
+        <svg
+          className="svg-icon"
+          enableBackground="new 0 0 426.667 426.667"
+          version="1.1"
+          viewBox="0 0 426.67 426.67"
+          xmlSpace="preserve"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="m213.33 0c-82.453 0-149.33 66.88-149.33 149.33 0 112 149.33 277.33 149.33 277.33s149.33-165.33 149.33-277.33c1e-3 -82.453-66.879-149.33-149.33-149.33zm0 202.67c-29.44 0-53.333-23.893-53.333-53.333s23.893-53.334 53.333-53.334 53.333 23.893 53.333 53.333-23.893 53.334-53.333 53.334z" />
+        </svg>
+      ]
     }
   ];
 
@@ -104,48 +103,64 @@ const Navigation = () => {
     entry = intersection 
     observer = 👮‍♂️ 🔍
     */
-    const observer = new IntersectionObserver( (entries, observer) => {
-        entries.forEach((entry) =>{
-            // if we scroll over section
-            if(entry.isIntersecting){
-                // find section id in navigation
-                elementsRef.current.forEach(i => { 
-                    if(i.current.href.match(/[^#]+$/)[0] === entry.target.id ){
-                    setLinkActive(i.current)
-                }
-                })   
+    window.addEventListener("load", initObserver);
+    function initObserver() {
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          // if we scroll over section
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { 
+              // find section id in navigation
+              elementsRef.current.forEach(i => {
+                (i.current.href.match(/[^#]+$/)[0] === entry.target.id) &&
+                  handleActive(i.current)
+              });
             }
-        })
-    }, {
-        rootMargin:'0px 0px',
-        threshold: 0.6
-    })
-    
-    links.map(e => document.getElementById(e.targetId)).forEach(section => observer.observe(section));
-    
+          });
+        },
+        {
+          rootMargin: "0px 0px",
+          threshold: 0.8
+        }
+      );
+
+      links
+        .map(e => document.getElementById(e.targetId))
+        .forEach(section => observer.observe(section));
+    }
+
+    //    Sprinkle some animation
+    let mql = window.matchMedia("(max-width: 768px)");
+
+    if (mql.matches) {
+      gsap.fromTo(
+        ".main-navigation",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, ease: "ease-out", duration: 0.25 }
+      );
+    } else {
+      gsap.fromTo(
+        ".main-navigation",
+        { opacity: 0, y: -40 },
+        { opacity: 1, y: 0, ease: "Bounce.easeOut", duration: 1.25 }
+      );
+    }
   }, []);
+  
+  useEffect(() =>{
+      console.log(linkActive);
+  })
 
-  useEffect(() => {
-    // 1. get id
-    // 2. search for it in link array
-    // 3. change active prop
-    !!linkActive && console.log(document.querySelector(window.location.hash));
-    
-    // extract the part behind the hash 
-    console.log(elementsRef.current[0].current.href.match(/[^#]+$/)[0]);
-  });
-
-  const handleClick = e => {
-    setLinkActive(e.currentTarget);
+  const handleActive = navFragment => {
+    setLinkActive(navFragment);
   };
 
   return (
-    <Nav>
+    <Nav className="main-navigation">
       {links.map((element, index) => (
         <NavigationLink
           href={`#${element.targetId}`}
           key={element.targetId}
-          onClick={handleClick}
           ref={elementsRef.current[index]}
           active={
             linkActive
