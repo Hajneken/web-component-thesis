@@ -13,6 +13,9 @@ const handleBackground = (id) => {
         case 'hours':
             return `
             background-image: url(${transitionTop});
+            left: -1%;
+            right: -1%;
+            width: 102%;
             `;
         case 'contact':
             return  handlePseudo(id);

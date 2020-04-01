@@ -147,9 +147,6 @@ const Navigation = () => {
     }
   }, []);
   
-  useEffect(() =>{
-      console.log(linkActive);
-  })
 
   const handleActive = navFragment => {
     setLinkActive(navFragment);

@@ -110,7 +110,9 @@ section > * {
   position: relative;
   grid-column: 1/-1;
   background-repeat: no-repeat;
-  padding-bottom: 10rem; }
+  background-size: cover;
+  height: 125.331%;
+   }
 @media (min-width: 768px) {
   #hours {
     justify-items: left; } }
@@ -139,32 +141,43 @@ section > * {
 #contact {
   background: var(--primary);
   scroll-margin-top: 250px;
+  margin:17.546% 0 17.546% 0;
+  
   }
-#contact h2, #contact p, #contact a {
-  color: white; }
 #contact::before {
+  pointer-events: none;
   content: "";
+  z-index: 1;
   position: absolute;
   left: 0;
+  padding-top: 14.886%;
   bottom: calc(100% - 10px);
   background-repeat: no-repeat;
   width: 100%;
   height: 250px;
   background-size: cover;
-  z-index: 1;
+  left: -1%;
+  right: -1%;
+  width: 102%;
 } }
 #contact::after {
   content: "";
   position: absolute;
-  left: 0;
+  pointer-events: none;
   top: calc(100% - 10px);
   background-repeat: no-repeat;
   width: 100%;
-  height: 280px;
+  padding-top:17.546%;
   background-size: cover;
+  left: -1%;
+  right: -1%;
+  background-repeat: no-repeat;
+  width: 102%;
+  background-position: center;
   z-index: 1;
 } }
-#contact h2 {
+.contact-header {
+  color: white;
   grid-column: 1/-1;
   text-align: center;
   font-size: 4.8rem;
@@ -172,10 +185,10 @@ section > * {
   line-height: 1;
   position: relative; }
 @media (min-width: 768px) {
-  #contact h2 {
+  .contact-header {
     margin-bottom: 4rem;
     font-size: 6.8rem; } }
-#contact h2::after {
+.contact-header::after {
   position: absolute;
   content: "";
   width: 41px;
@@ -187,10 +200,10 @@ section > * {
   border-radius: 5px; }
 
 #gallery {
-  margin: 130px 0 25px 0; }
+  margin: 0 0 25px 0; }
 @media (min-width: 1280px) {
   #gallery {
-    margin: 240px 0 100px 0; } }
+    margin: 0 0 100px 0; } }
 #gallery h3 {
   font-size: 4rem;
   line-height: 1.2;
@@ -276,6 +289,7 @@ article p {
   box-shadow: var(--shadow); }
 
 .contact-info__link {
+  color: white;
   z-index: 1;
   font-weight: 600;
   font-size: 1.8rem;

@@ -53,8 +53,8 @@ const Main = () => {
             <Section id="home" className="p-section">
                 <div 
                
-                className="hero-description"><h1 class="hero-description__header">Veterinární ambulance na máji</h1>
-                    <p class="hero-description__subheader">Prevence a léčba malých zvířat</p></div>
+                className="hero-description"><h1 className="hero-description__header">Veterinární ambulance na máji</h1>
+                    <p className="hero-description__subheader">Prevence a léčba malých zvířat</p></div>
                     <img className="hero" src={hero} alt=''/>
             </Section>
             <Section id="hours">
@@ -76,7 +76,7 @@ const Main = () => {
             </Section>
             <Section id="contact">
                 <div className="contact-grid">
-                    <h2>Kontakt</h2>
+                    <h2 className="contact-header">Kontakt</h2>
                     <div className="contact-info">
                         <a className="contact-info__link"
                            href="tel:+420385511793">

@@ -21,7 +21,7 @@ const Form = styled.form`
         width: 7rem;
         height: 7rem;
         left: 50%;
-        top: -5px;
+        top: -15px;
         transform: translateX(-50%); 
     }
     
@@ -38,6 +38,7 @@ const Form = styled.form`
         grid-column: 1/-1;
         width: 100%;
         text-align: center;
+        color:var(--secondary);
     }
     
     img{
@@ -56,19 +57,42 @@ const Button = styled.button`
     border: none;
     padding: 0.8rem 1.2rem;
     font-weight: 800;
-    box-shadow: var(--shadow);
+    box-shadow: ${props => props.valid ?`0 0 15px 7px rgba(255, 255, 255, 0.15);` : `var(--shadow);`}
     grid-column: 1/-1;
     font-size: 1.8rem;
     transition: all 200ms ease-in-out;
+     }
+    
      
   @media (min-width: 768px) {
       font-size: 2.4rem;
       padding: 1.2rem 1.5rem;
        } 
-  &:hover {
-    transform: scale(1.08);
-    transition: all 200ms ease-in-out; 
+  &:hover, &:focus {
+    ${props => (!props.valid !== null && !props.valid) ? `animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  perspective: 1000px;
+  `:
+  `transform: scale(1.08);`
     }
+    
+    @keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 `
 
 export {Form, Button};

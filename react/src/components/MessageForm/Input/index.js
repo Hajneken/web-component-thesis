@@ -1,67 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { StyledInput } from "./styled";
+import React, { useEffect, useRef } from "react";
+import { InputWrapper, Error } from "./styled";
 
 const Input = props => {
-//   const [valid, setValid] = useState(null);
-//   const [empty, setEmpty] = useState(true);
-
-//   const [focused, setFocused] = useState(false);
-//   const [inputValue, setInputValue] = useState("");
-
-//   useEffect(() => {
-//     console.log("valid ", valid);
-//   });
-
-//   const handleFocus = () => {
-//     // setFocused(!focused);
-//   };
-
-//   const handleBlur = e => {
-//     setFocused(!focused);
-//     switch (props.type) {
-//       case "email":
-//         validateEmail(e);
-//         break;
-//       case "text":
-//         validateText();
-//         break;
-//       default:
-//         break;
-//     }
-//   };
-
-//   const handleChange = e => {
-//     // setInputValue(e.target.value);
-//     // e.target.value !== "" ? setEmpty(false) : setEmpty(true);
-//   };
-
-//   const validateEmail = () => {
-//     //   https://www.w3resource.com/javascript/form/email-validation.php
-//     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//     setValid(mailFormat.test(inputValue));
-//   };
-
-//   const validateText = () => {
-//     const textFormat = /^[0-9a-zA-Z]+$/;
-//     setValid(textFormat.test());
-//   };
-
   
-  // onFocus={handleFocus}
-  // onBlur={handleBlur}
+  const formFieldRef = useRef();
+
 
   return (
-    <StyledInput
+    <InputWrapper
       element={props.element}
       valid={props.valid}
+      focus={props.focused === formFieldRef.current}
+      inputValue={props.inputValue}
     >
       {props.element === "input" && (
         <input
           id={props.id}
           name={props.name}
-          onChange={props.onChangeValue}
-          value={props.value}
+          ref={formFieldRef}
+          value={props.inputValue}
           type={!!props.type ? props.type : "text"}
+          onChange={props.onChangeValue}
+          onFocus={props.onInputFocus}
+          onBlur={props.onInputBlur}
+          maxLength={props.maxChars}
+          minLength={props.minChars}
           required
         />
       )}
@@ -69,15 +32,23 @@ const Input = props => {
       {props.element === "textarea" && (
         <textarea
           id={props.id}
-          value={props.value}
-          onChange={props.onChangeValue}
+          ref={formFieldRef}
+          value={props.inputValue}
           name={!!props.name ? props.name : props.id}
+          onChange={props.onChangeValue}
+          onFocus={props.onInputFocus}
+          onBlur={props.onInputBlur}
+          maxLength={props.maxChars}
+          minLength={props.minChars}
           required
         />
       )}
-
-      <label htmlFor={props.id}>{props.children}</label>
-    </StyledInput>
+      <label htmlFor={props.id}>
+      {props.children}
+      </label>
+      {props.valid !== null && !props.valid && props.inputValue !== "" && 
+      <Error>{props.errorMsg || `Pole musí obsahovat ${props.minChars} až ${props.maxChars} znaků.` }</Error>}
+    </InputWrapper>
   );
 };
 

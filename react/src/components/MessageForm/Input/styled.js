@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledInput = styled.div`
+const InputWrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 44px;
@@ -12,6 +12,15 @@ const StyledInput = styled.div`
   box-shadow: var(--shadow);
   ${props => props.element === 'textarea' && `grid-column: 1/-1;`}
   
+  input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus{
+      border-radius: 15px;
+  }
+  
   &:after{
     content: '';
     position: absolute;
@@ -20,14 +29,15 @@ const StyledInput = styled.div`
     width: calc(100% + 2px);
     height: calc(100% - 5px);
     background: transparent;
-    border-bottom: 5px solid var(--primary-darker); 
-    ${props => props.valid && `border-bottom: 5px solid green;` } 
     border-radius: 15px;    
     pointer-events: none;
-    transform: ${props => (props.focus || !props.empty) ? `scaleX(1);` : `scaleX(0);`} ;
     transition: all 150ms ease-in-out;
     
-    ${props => !props.empty && props.valid !== null && !props.valid && `border-bottom: 5px solid red;` } 
+    transform: ${props => (props.focus || props.inputValue !== "") ? `scaleX(1);` : `scaleX(0);`} ;
+    
+    border-bottom: 5px solid var(--primary-darker); 
+    ${props => props.valid && `border-bottom: 5px solid #28a745;` } 
+    ${props => props.valid !== null && !props.valid && `border-bottom: 5px solid #cc0000;` } 
   }
 
   input {
@@ -41,6 +51,7 @@ const StyledInput = styled.div`
     border: none;
     resize: none;
     outline: none;
+    ${props => props.valid && `color: #28a745;` } 
   }
   
   label{
@@ -57,14 +68,14 @@ const StyledInput = styled.div`
     transition: all 150ms ease-in-out;
     pointer-events: none;
     
-    ${props => (props.focus || !props.empty) && props.element === 'input' &&`
+    ${props => (props.focus || props.inputValue !== "") && props.element === 'input' &&`
     transform: translateY(-250%);
     color: white;
     font-size: 1.2rem;
     `
     }
     
-    ${props => (props.focus || !props.empty) && props.element === 'textarea' && `
+    ${props => (props.focus || props.inputValue !== "") && props.element === 'textarea' && `
     transform: translateY(-3rem);
     color: white;
     font-size: 1.2rem;
@@ -84,4 +95,55 @@ const StyledInput = styled.div`
   }
 `;
 
-export { StyledInput };
+const Error = styled.div`
+    position: absolute;
+    z-index: 10;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    bottom:calc(100% + 2rem);
+    color: #cc0000;
+    font-weight: bold;
+    background: white;
+    margin-left: auto;
+    border-radius: 10px;
+    width: 80%;
+    text-align:center;
+    box-shadow: var(--shadow-color);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: appear 250ms ease-out;
+    
+    
+    &:before{
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width:0;
+      height: 0;
+      border-top: 15px solid var(--secondary);
+      border-bottom:10px solid transparent;
+      border-left:10px solid transparent;
+      border-right:10px solid transparent;
+      bottom: -25px;
+      left:50%;
+      transform: translateX(-50%);
+    }
+    
+    
+    @keyframes appear{
+      0%{
+        opacity: 0;
+        transform: translate(-50%,0) scale(0.8);
+      }
+      
+      50%{
+        transform: translate(-50%,0) scale(1.1);
+      }
+      
+      100%{
+        opacity: 1;
+        transform: translate(-50%,0) scale(1);
+      }
+    }
+`
+export { InputWrapper, Error };

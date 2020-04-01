@@ -121,7 +121,7 @@ export const StyledGallery = styled.div`
               width: 50px;
               height: 50px;
               padding: 1rem;
-            }
+             }
             }    
        }
        
