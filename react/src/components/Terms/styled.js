@@ -10,12 +10,14 @@ export const StyledTerms = styled.article`
   }
   
   h3{
+  font-size: 2.8rem;
   color: black;
   text-align: left;
   margin-bottom: 0.8rem;
   }
   
   p{
+  display: block;
   text-align:left;
   font-size: 1.6rem;
   color:black;

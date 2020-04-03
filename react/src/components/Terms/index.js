@@ -7,7 +7,7 @@ const Terms = () => {
     return(
         <StyledTerms>
             <h2>Zásady ochrany osobních údajů</h2>
-            <p>Provozovatel webu: <a href="https://hynekzemanec.me/" target="_blank" rel="noopener noopener">Hynek
+            <p>Provozovatel webu: <a href="https://hynekzemanec.me/" target="_blank" rel="noopener noreferrer">Hynek
                 Zemanec</a> <br/> IČO: 04393597<br/>Se sídlem Stará cesta 7, České Budějovice
 <br/>Kontaktní e-mail: <a href="mailto:hynek@hynekzemanec.cz">hynek@hynekzemanec.cz</a></p>
 
@@ -39,8 +39,8 @@ const Terms = () => {
 
             <p>Zpracovatelem těchto údajů je:</p>
 
-            <p>Hynek Zemanec (IČO 04393597, se sídlem Stará cesta 7, České Budějovice), který provozuje tento web.</p>
-            <p>MVDr. Dana Zemancová (IČO 60077361, se sídlem V.Volfa 45, 370 05 České Budějovice), která odpovídá na
+            <p>Hynek Zemanec (IČO 04393597, se sídlem Stará cesta 7, České Budějovice), který provozuje tento web. </p>
+            <p>MVDr. Dana Zemancová (IČO 60077361, se sídlem V. Volfa 45, 370 05 České Budějovice), která odpovídá na
                 Vaše dotazy.</p>
 
             <h3>Jaká jsou má práva?</h3>

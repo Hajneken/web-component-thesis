@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import gsap from 'gsap';
 
 import Gallery from "../../components/Gallery";
@@ -21,10 +21,19 @@ import room1 from "../../Assets/img/cekarna1.jpg";
 import room2 from "../../Assets/img/cekarna2.jpg";
 import ordinace from "../../Assets/img/ordinace.jpg";
 import hero from '../../Assets/img/zahlavi.png'
+import Terms from "../../components/Terms";
+import Modal from "../../components/Modal";
 
 
 const Main = () => {
-    
+
+    const [modalBtn, setModalBtn] = useState(null);
+    const [modalOpened, setModalOpened] = useState(false);
+    const handleModalToggle = (e) => {
+        setModalOpened(!modalOpened);
+        setModalBtn(e.target);
+    }
+
     const galleryImages =[
         {
           src: ambulance,
@@ -44,7 +53,7 @@ const Main = () => {
         }
       ];
       
-      useEffect(()=>{
+    useEffect(()=>{
           gsap.fromTo(['.hero-description__header', '.hero-description__subheader'], {opacity:0, y:50}, {opacity:1, y:0, stagger:0.6, duration:2})
       }, [])
 
@@ -78,27 +87,35 @@ const Main = () => {
                 <div className="contact-grid">
                     <h2 className="contact-header">Kontakt</h2>
                     <div className="contact-info">
-                        <a className="contact-info__link"
+                        <a className="link contact-info__link"
                            href="tel:+420385511793">
                         <img className="svg-icon"
                              src={phone}
                              alt="Ikona Telefonu"/>
                         <span>+ 420 385 511 793</span></a>
-                        <a className="contact-info__link"
+                        <a className="link contact-info__link"
                            href="#end">
                         <img className="svg-icon" src={location} alt="Ikona Lokace"/>
                         <span>V. Volfa 45, České Budějovice</span></a>
-                        <a className="contact-info__link"
+                        <a className="link contact-info__link"
                            href="#end">
                             <img className="svg-icon" src={bus} alt="Ikona Autobusové zastávky"/>
                         <span>Jaroslava Bendy</span></a>
                     </div>
-                    <MessageForm />
+                    <MessageForm openModal={handleModalToggle} />
                 </div>
             </Section>
             <Section id="gallery">
                 <Gallery images={galleryImages} />
             </Section>
+            <Modal
+                closeMethod={handleModalToggle}
+                opened={modalOpened}
+                openedBy={modalBtn}
+                agreeBtn
+                agreeBtnLabel="Souhlasím">
+                <Terms />
+            </Modal>
         </main>
     )
 }

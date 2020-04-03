@@ -7,7 +7,7 @@ const Header = styled.header`
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 10;
   @include tablet() {
     top: 0;
     bottom: unset;

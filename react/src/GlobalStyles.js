@@ -93,7 +93,7 @@ section > * {
   position: relative;
   }
 #home:after {
-  z-index: 0;
+  z-index: 1;
   content: '';
   position: absolute;
   left: 0;
@@ -128,7 +128,9 @@ section > * {
   background-repeat: no-repeat;
   background-position: 30px 0px;
   height: 100%;
-  width: 150%; }
+  width: 150%;
+  animation: kenburns 30s alternate infinite;
+   }
 @media (min-width: 768px) {
   #hours .timetable::after {
     display: block; } }
@@ -232,7 +234,8 @@ article {
     grid-gap: 8rem; } }
 @media (min-width: 768px) {
   article .about__img {
-    grid-row: 1/-1; } }
+    grid-row: 1/-1;
+    } }
 article h2 {
   font-size: 2.4rem;
   font-weight: 800;
@@ -258,7 +261,7 @@ article p {
 
 .contact-grid {
   position:relative;
-  z-index: 10;
+  z-index: 5;
   margin-top: -110px; }
 @media (min-width: 768px) {
   .contact-grid {
@@ -359,7 +362,7 @@ header {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1000; }
+  z-index: 10; }
 @media (min-width: 768px) {
   header {
     top: 0;
@@ -420,8 +423,22 @@ html {
     }
 }
 
+.link{
+cursor: pointer;
+background: none;
+border: none;
+padding: 0;
+color: var(--secondary);
+text-decoration: underline;
+transition: all 150ms ease-in-out;
+}
+
+.link:hover{
+  text-shadow: 1px 0 currentColor;
+}
+
 .hero-description {
-  z-index: 10;
+  z-index: 5;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -440,7 +457,7 @@ html {
   text-transform: uppercase;
   font-weight: 800;
   text-align: center;
-  ${'' /* text-shadow: var(--text-shadow); */}
+  opacity: 0;
   
   background: linear-gradient(90deg,var(--primary), #3f5093, var(--primary-darker));
     background-clip: text;
@@ -448,6 +465,9 @@ html {
     -webkit-background-clip: text;
     color: transparent;
     filter: var(--filter-shadow);
+     }
+   .hero-description__subheader{
+     opacity: 0;
      }
 @media (min-width: 576px) {
   .hero-description h1 {
@@ -462,12 +482,18 @@ html {
     font-size: 3rem; } }
 
 .about__img {
-  width: 100%; }
-.about__img img {
-  object-fit: cover;
   width: 100%;
   border-radius: 15px;
-  box-shadow: var(--shadow-color); }
+  overflow: hidden;
+  }
+.about__img img {
+  object-fit: cover;
+  border-radius: 15px;
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow-color); 
+  animation: kenburns 30s alternate infinite;
+  }
 
 .longer-text {
   padding-left: 1.2rem;

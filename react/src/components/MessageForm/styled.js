@@ -17,12 +17,13 @@ const Form = styled.form`
         content: '';
         position: absolute;
         background-image: url(${mail});
+        background-repeat: no-repeat;
         filter: invert(1);
         width: 7rem;
         height: 7rem;
         left: 50%;
         top: -15px;
-        transform: translateX(-50%); 
+        transform: translateX(-40%); 
     }
     
     h3{
@@ -47,6 +48,18 @@ const Form = styled.form`
         background: linear-gradient( 45deg, var(--primary) 0%, var(--primary-darker) 100% );
         grid-column: 1/-1;
         width: 60px;
+    }
+    
+    .form__terms{
+    grid-column: 1/-1;
+    span{
+    font-size: 1.6rem;
+    color: var(--secondary);
+    }
+    
+    
+    
+    
     }
 `
 

@@ -104,6 +104,7 @@ const Nav = styled.nav`
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 65px;
   box-shadow: var(--shadow-color);
+  opacity: 0;
 
   @media (min-width: 768px) {
     grid-template-columns: 4fr repeat(4, 100px) 1fr;

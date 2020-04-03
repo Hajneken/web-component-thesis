@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Backdrop = styled.div`
-
             z-index: 1000;
             position: fixed;
             top: 0;
@@ -9,13 +8,18 @@ export const Backdrop = styled.div`
             height: 100%;
             width: 100%;
             background: rgba(0,0,0,0.7);
-            transform: translate3d(0, 100%, 0);
+            transform: translate(0, 100%);
+            opacity: 0;
+            
+            a{
+            display: ${props => !props.opened ? `none` : `inline`}; 
+            }
             
             .content{
                 width: 100%;
                 position: absolute;
                 max-width:800px;
-                padding:20px;
+                padding: 2.8rem;
                 left: 50%;
                 transform: translateX(-50%);
                 border-radius: 15px;
@@ -42,7 +46,19 @@ export const Backdrop = styled.div`
             justify-content: center;
             transition: all 150ms ease-in-out;
             
+            &.agree{
+            font-size: 2rem;
+            justify-content: center;
+            position: relative;
+            width: fit-content;
+            color: white;
+            margin: 0 auto;
+            background-color: var(--primary);
+            
+            }
+            
             img{
+              background: none;
               width: 80%;
               transition: all 150ms ease-in-out;
               filter: invert(1) drop-shadow( 0 0 10px rgba(0,0,0,0.3));
@@ -67,14 +83,3 @@ export const Backdrop = styled.div`
              }
             } 
 `
-
-export const ModalBtn = styled.button`
-        cursor: pointer;
-        padding: 0;
-        font-size: 1.6rem;
-        grid-column: 1/-1;
-        background: none;
-        border: none;
-        color: var(--secondary);
-        text-decoration: underline;
-` 

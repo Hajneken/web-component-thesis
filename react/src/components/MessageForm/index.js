@@ -8,7 +8,7 @@ import Terms from '../../components/Terms'
 
 import submittedSVG from "../../Assets/svg/submitted.svg";
 
-const MessageForm = () => {
+const MessageForm = (props) => {
   // https://docs.netlify.com/forms/notifications/
   //  sent from formresponses@netlify.com
 
@@ -33,24 +33,31 @@ const MessageForm = () => {
     console.log()
   })
 
+  const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     if (formValid){
-      setSubmitted(!submitted);
-    }
-    //     fetch("/", {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //       body: encode({ "form-name": "contact", ...this.state })
-    //     })
-    //       .then(() => alert("Success!"))
-    //       .catch(error => alert(error));
 
-    //     e.preventDefault();
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({ "form-name": "contact", "email":inputEmailValue, "subject":inputSubjectValue, "text":inputTextValue })
+        })
+          .then(() => setSubmitted(true))
+          .catch(error => alert(error));
+
+        e.preventDefault();
+
+    }
+
   };
 
   const validateForm = () => {
-    // if valid enable submit button setFormValid(true)
     setFormValid(inputEmailValid && inputSubjectValid && inputTextValid);
   };
 
@@ -78,9 +85,6 @@ const MessageForm = () => {
   };
 
   const validateText = e => {
-    //  TODO 
-    // const textFormat = /^[0-9a-zA-Z]+$/;
-    // setInputSubjectValid(textFormat.test(value));
     e.target.name === 'subject' && setInputSubjectValid(inputSubjectValue.length >= 2);
     e.target.name === 'message' && setInputTextValid(inputTextValue.length >= 5);
     validateForm();
@@ -159,13 +163,16 @@ const MessageForm = () => {
           >
             Vaše zpráva
           </Input>
-          <div style={{gridColumn:'1/-1'}}>
-            <p style={{display:'inline'}}>
-            Odesláním souhlasíte se{' '}
-          </p>
-            <Modal label="zpracováním osobních údajů.">
-              <Terms />
-            </Modal></div>
+          <div className="form__terms">
+            <span>Odesláním souhlasíte se{' '}</span>
+            <button
+                style={{fontSize:'1.6rem'}}
+                className="link"
+                type="button"
+                onFocus={validateForm}
+                aria-label="Otevřít modální dialogové okno s podmínkami"
+                onClick={props.openModal}>zpracováním osobních údajů.</button>
+          </div>
           <Button
           onMouseOver={validateForm}
           valid={formValid}
