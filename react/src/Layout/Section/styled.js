@@ -46,7 +46,6 @@ export const Section = styled.section`
 
   ${props => handleBackground(props.id)}
 
-${'' /* Ken Burns Effect */}
 
   `
 

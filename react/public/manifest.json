@@ -1,6 +1,6 @@
 {
-  "short_name": "Veterina Maj",
-  "name": "Veterina Maj",
+  "short_name": "Veterina Máj",
+  "name": "Veterina Máj",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,5 +21,9 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#6894ea",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "developer": {
+    "name": "Hynek Zemanec",
+    "url": "https://hynekzemanec.me/"
+  }
 }

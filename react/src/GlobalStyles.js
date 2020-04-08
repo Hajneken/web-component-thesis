@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components'
+import '@openfonts/nunito_latin-ext';
 
 const GlobalStyles = createGlobalStyle`
  :root {
@@ -19,9 +20,6 @@ html {
   font-size: 62.5%;
   }
 
-@font-face {
-  font-family: "Nunito", sans-serif;
-  src: url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap&subset=latin-ext"); }
 
 * {
   font-family: "Nunito", sans-serif;

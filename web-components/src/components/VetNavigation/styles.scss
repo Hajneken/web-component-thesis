@@ -1,0 +1,29 @@
+  $transition: all 250ms ease-in-out;
+
+
+nav {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 65px;
+  box-shadow: var(--shadow-color);
+
+  @media (min-width: 768px) {
+    grid-template-columns: 4fr repeat(4, 100px) 1fr;
+    box-shadow: unset;
+  }
+
+  nav-link:not(:last-child) {
+    border-right: 1px solid #98b7f4;
+
+    @media (min-width: 768px) {
+      &:first-child {
+        grid-column: 2/3;
+      }
+      &:last-child {
+        grid-column: -2/-3;
+      }
+    }
+
+  }
+}

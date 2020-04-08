@@ -57,9 +57,6 @@ const Form = styled.form`
     color: var(--secondary);
     }
     
-    
-    
-    
     }
 `
 

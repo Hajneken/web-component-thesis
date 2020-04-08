@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@openfonts/nunito_latin-ext": "^1.44.1",
     "cra-template": "1.0.2",
     "gsap": "^3.2.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "typeface-nunito": "^1.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

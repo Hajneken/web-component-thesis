@@ -47,7 +47,7 @@ const Input = props => {
       {props.children}
       </label>
       {props.valid !== null && !props.valid && props.inputValue !== "" && 
-      <Error>{props.errorMsg || `Pole musí obsahovat ${props.minChars} až ${props.maxChars} znaků.` }</Error>}
+      <Error aria-live="polite" >{props.errorMsg || `Pole musí obsahovat ${props.minChars} až ${props.maxChars} znaků.` }</Error>}
     </InputWrapper>
   );
 };

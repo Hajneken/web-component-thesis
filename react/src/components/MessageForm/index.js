@@ -17,7 +17,7 @@ const MessageForm = (props) => {
   // form states
   const [submitted, setSubmitted] = useState(false);
   const [formValid, setFormValid] = useState(null);
-  
+
   const [focused, setFocused] = useState(null);
   
   // input validity states
@@ -42,19 +42,14 @@ const MessageForm = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (formValid){
-
         fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "contact", "email":inputEmailValue, "subject":inputSubjectValue, "text":inputTextValue })
+          body: encode({ "form-name": "contact", "email":inputEmailValue, "subject":inputSubjectValue, "message":inputTextValue })
         })
           .then(() => setSubmitted(true))
           .catch(error => alert(error));
-
-        e.preventDefault();
-
     }
-
   };
 
   const validateForm = () => {
@@ -85,8 +80,8 @@ const MessageForm = (props) => {
   };
 
   const validateText = e => {
-    e.target.name === 'subject' && setInputSubjectValid(inputSubjectValue.length >= 2);
-    e.target.name === 'message' && setInputTextValid(inputTextValue.length >= 5);
+    e.target.name === 'subject' && setInputSubjectValid(inputSubjectValue.length >= props.minChars);
+    e.target.name === 'message' && setInputTextValid(inputTextValue.length >= props.minChars);
     validateForm();
   };
   

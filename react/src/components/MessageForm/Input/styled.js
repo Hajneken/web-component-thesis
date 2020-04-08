@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
   box-shadow: var(--shadow);
   ${props => props.element === 'textarea' && `grid-column: 1/-1;`}
   
-  input:-webkit-autofill,
+input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
