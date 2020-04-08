@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>PWA Toolkit</title>
+
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Welcome to the Ionic PWA Toolkit. You can use this starter to build fast PWAs using Ionic and Stencil!">
+  <meta name="theme-color" content="#16161d">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ionic PWA">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+  <script type="module" src="/build/app.esm.js"></script>
+  <script nomodule src="/build/app.js"></script>
+
+  <link href="/build/app.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+
+<header>
+<!--  <vet-navigation>-->
+
+<!--  </vet-navigation>-->
+</header>
+<main>
+  <section id="home" class="p-section">
+    <div class="hero-description"><h1 class="hero-description__header"
+                                      style="transform: translate(0px, 0px); opacity: 1;">Veterinární ambulance
+      na máji</h1>
+      <p class="hero-description__subheader" style="transform: translate(0px, 0px); opacity: 1;">Prevence a
+        léčba malých zvířat</p></div>
+    <img class="hero" src="/static/media/zahlavi.3d059e43.png" alt=""></section>
+  <section id="hours">
+    <div class="timetable"><h2>Ordinační hodiny</h2>
+      <table class="timetable__week">
+        <tbody>
+        <tr>
+          <th>Pondělí</th>
+          <td rowspan="5">9:00 - 11:30<br>15:00 - 17:30</td>
+        </tr>
+        <tr>
+          <th>Úterý</th>
+        </tr>
+        <tr>
+          <th>Středa</th>
+        </tr>
+        <tr>
+          <th>Čtvrtek</th>
+        </tr>
+        </tbody>
+      </table>
+      <table class="timetable__week">
+        <tbody>
+        <tr>
+          <th>Pátek</th>
+          <td>9:00 - 11:30</td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="timetable__week">
+        <tbody>
+        <tr>
+          <th>Sobota</th>
+          <td rowspan="2">Zavřeno</td>
+        </tr>
+        <tr>
+          <th>Neděle</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="about">
+    <article>
+      <div><h2>MVDr. Dana Zemancová</h2>
+        <p>Již od roku 1995 poskytuje odbornou preventivní péči a léčbu <strong>psů</strong>,<strong>
+          koček</strong> a dalších <strong>malých zvířat</strong>. Nabízené služby zahrnují drobné úkony
+          jako <strong>očkování</strong>, <strong>čipování</strong> nebo <strong>odčervení</strong>. Dále
+          poskytujeme <strong>laboratorní</strong> a <strong>mikroskopická</strong> vyšetření a
+          drobné<strong> chirurgické zákroky</strong>.</p></div>
+      <div class="about__img"><img src="/static/media/veterinar.259c999b.jpg"
+                                   alt="Veterinářka Dana Zemancová"></div>
+    </article>
+  </section>
+  <section id="contact">
+    <div class="contact-grid">
+      <h2 class="contact-header">Kontakt</h2>
+      <div class="contact-info"><a class="link contact-info__link" href="tel:+420385511793"><img
+        class="svg-icon" src="/static/media/phone.fa0965d0.svg"
+        alt="Ikona Telefonu"><span>+ 420 385 511 793</span></a><a
+        class="link contact-info__link" href="#end"><img class="svg-icon"
+                                                         src="/static/media/location.4a20f9e1.svg"
+                                                         alt="Ikona Lokace"><span>V. Volfa 45, České Budějovice</span></a><a
+        class="link contact-info__link" href="#end"><img class="svg-icon"
+                                                         src="/static/media/bus.4da44d83.svg"
+                                                         alt="Ikona Autobusové zastávky"><span>Jaroslava Bendy</span></a>
+      </div>
+      <!--            <form data-netlify="true" class="form">-->
+      <!--                <div class="form__field"><input id="emailInput" name="email" type="email" required=""-->
+      <!--                                                value=""><label for="emailInput">e-mail</label></div>-->
+      <!--                <div class="form__field"><input id="subjectInput" name="subject" type="text" maxlength="40"-->
+      <!--                                                minlength="2" required="" value=""><label for="subjectInput">Předmět-->
+      <!--                    zprávy</label></div>-->
+      <!--                <div class="form__field"><textarea id="messageText" name="message" maxlength="2000"-->
+      <!--                                                   minlength="5" required=""></textarea><label-->
+      <!--                        for="messageText">Vaše zpráva</label></div>-->
+      <!--                <div class="form__terms"><span>Odesláním souhlasíte se </span>-->
+      <!--                    <button class="link" type="button" aria-label="Otevřít modální dialogové okno s podmínkami"-->
+      <!--                            style="font-size: 1.6rem;">zpracováním osobních údajů.-->
+      <!--                    </button>-->
+      <!--                </div>-->
+      <!--                <button class="contact-form__btn">Odeslat</button>-->
+      <!--            </form>-->
+    </div>
+  </section>
+  <section id="gallery">
+    <h3>Galerie</h3>
+    <div class="gallery" aria-label="Galerie veterinární ambulance">
+      <!--            <div aria-hidden="true" role="dialog" class="gallery__fullscreen" style="opacity: 0;">-->
+      <!--                <div class="gallery__img-wrap"><img aria-labelledby="galleryImgLabel" class="gallery__img-fs" src=""-->
+      <!--                                                    alt="">-->
+      <!--                    <button aria-label="Zavřít galerii" tabindex="-1"><img src="/static/media/close.18445307.svg"-->
+      <!--                                                                           alt=""></button>-->
+      <!--                    <button aria-label="Předchozí obrázek" tabindex="-1" class="left"><img-->
+      <!--                            src="/static/media/galleryArrow.be237328.svg" alt=""></button>-->
+      <!--                    <button tabindex="-1" aria-label="Další obrázek" class="right"><img-->
+      <!--                            src="/static/media/galleryArrow.be237328.svg" alt=""></button>-->
+      <!--                    <p id="galleryImgLabel" class="img__label"></p>-->
+      <!--                    <p class="img__count">1 / 4</p></div>-->
+      <!--            </div>-->
+      <img tabindex="0" src="/static/media/ambulance.92ab6af1.jpg" alt="Ambulance" class="gallery__img">
+      <img tabindex="0" src="/static/media/cekarna1.f7686ecf.jpg" alt="Čekárna" class="gallery__img">
+      <img tabindex="0" src="/static/media/cekarna2.f2bc5752.jpg" alt="Čekárna z pohledu od vchodových dveří"
+           class="gallery__img">
+      <img tabindex="0" src="/static/media/ordinace.38ce27d6.jpg" alt="Ordinace s veterinářem" class="gallery__img">
+    </div>
+  </section>
+  <!--    <div class="" style="transform: translate(0px, -100%); opacity: 0;">-->
+  <!--        <div aria-hidden="true" role="dialog" class="content">-->
+  <!--            <button type="button" class="close" aria-label="Zavřít" tabindex="-1"><img-->
+  <!--                    src="/static/media/close.18445307.svg" alt=""></button>-->
+  <!--            <div>-->
+  <!--                <article class=""><h2>Zásady ochrany osobních údajů</h2>-->
+  <!--                    <p>Provozovatel webu: <a href="https://hynekzemanec.me/" target="_blank"-->
+  <!--                                             rel="noopener noreferrer">Hynek Zemanec</a> <br> IČO: 04393597<br>Se-->
+  <!--                        sídlem Stará cesta 7, České Budějovice<br>Kontaktní e-mail: <a-->
+  <!--                                href="mailto:hynek@hynekzemanec.cz">hynek@hynekzemanec.cz</a></p>-->
+  <!--                    <h3>Jak data sbíráme?</h3>-->
+  <!--                    <p>Při odeslání formuláře je zpráva s Vaší emailovou adresou zaslána na speciálně zřízený email,-->
+  <!--                        který spravuje MVDr. Dana Zemancová.</p>-->
+  <!--                    <h3>Jaká data sbíráme a proč?</h3>-->
+  <!--                    <p>Pro účely komunikace uchováváme následující data:</p>-->
+  <!--                    <ul>-->
+  <!--                        <li><strong>Vaše emailová adresa</strong></li>-->
+  <!--                        <li><strong>Předmět Vaší zprávy</strong></li>-->
+  <!--                        <li><strong>Obsah elektronické komunikace</strong></li>-->
+  <!--                    </ul>-->
+  <!--                    <p>Tato data sbíráme, abychom vám mohli odpovědět na dotazy či připomínky, které skrze formulář-->
+  <!--                        zašlete. Tyto údaje nikde veřejně neuvádíme.</p>-->
+  <!--                    <h3>Jak dlouho data uchováváme?</h3>-->
+  <!--                    <p>Data jsou uchovávána po dobu nezbytně nutnou pro odpověď, maximálně však 1 rok.</p>-->
+  <!--                    <h3>Kdo osobní údaje zpracovává?</h3>-->
+  <!--                    <p>Zpracovatelem těchto údajů je:</p>-->
+  <!--                    <p>Hynek Zemanec (IČO 04393597, se sídlem Stará cesta 7, České Budějovice), který provozuje-->
+  <!--                        tento web. </p>-->
+  <!--                    <p>MVDr. Dana Zemancová (IČO 60077361, se sídlem V. Volfa 45, 370 05 České Budějovice), která-->
+  <!--                        odpovídá na Vaše dotazy.</p>-->
+  <!--                    <h3>Jaká jsou má práva?</h3>-->
+  <!--                    <ul>-->
+  <!--                        <li><strong>Právo na odvolání souhlasu</strong> - Kdykoli můžete odvolat dříve udělený-->
+  <!--                            souhlas se zpracováním Vašich osobních údajů.-->
+  <!--                        </li>-->
+  <!--                        <li><strong>Právo na informace</strong> - Můžete se dotázat, jaké údaje zpracováváme, za-->
+  <!--                            jakým účelem, v jakém rozsahu, jak dlouho a kdo k nim má přístup.-->
+  <!--                        </li>-->
+  <!--                        <li><strong>Právo na opravu či výmaz</strong> - Kdykoli můžete požádat o opravu či výmaz-->
+  <!--                            Vašich osobních údajů.-->
+  <!--                        </li>-->
+  <!--                    </ul>-->
+  <!--                    <p>Pro uplatnění kteréhokoliv práva zmíněného výše kontaktujte Provozovatele webu, a to-->
+  <!--                        e-mailem, popř. písemně.</p>-->
+  <!--                    <p class="center"><em>Tyto Zásady ochrany osobních údajů jsou platné a účinné od 1. 4.-->
+  <!--                        2020.</em></p></article>-->
+  <!--            </div>-->
+  <!--            <button class="agree" type="button" tabindex="-1">Souhlasím</button>-->
+  <!--        </div>-->
+  <!--    </div>-->
+</main>
+<footer id="end">
+  <iframe title="Lokace"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1933.495232330495!2d14.435563662154644!3d48.983054046178445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9d2fc949d3c84660!2sMVDr.%20Dana%20Zemancov%C3%A1!5e0!3m2!1sen!2scz!4v1584136823572!5m2!1sen!2scz"
+          width="100%" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  <p>© <span id="year">2020</span> with <a href="https://hynekzemanec.me/" class="author"><span
+    style="color: red;">♥</span> Hynek Zemanec</a></p></footer>
+
+</body>
+
+</html>
