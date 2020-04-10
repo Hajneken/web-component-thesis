@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/veterinamaj.esm.js"></script>
+  <script nomodule src="/build/veterinamaj.js"></script>
+</head>
+<body>
+
+
+<script>
+
+</script>
+
+
+<header>
+    <vet-navigation>
+    </vet-navigation>
+</header>
+<main>
+  <section id="home" class="p-section">
+    <div class="hero-description"><h1 class="hero-description__header"
+                                      style="transform: translate(0px, 0px); opacity: 1;">Veterinární ambulance
+      na máji</h1>
+      <p class="hero-description__subheader" style="transform: translate(0px, 0px); opacity: 1;">Prevence a
+        léčba malých zvířat</p></div>
+    <img class="hero" src="/static/media/zahlavi.3d059e43.png" alt=""></section>
+  <section id="hours">
+    <div class="timetable"><h2>Ordinační hodiny</h2>
+      <table class="timetable__week">
+        <tbody><tr><th>Pondělí</th><td rowspan="5">9:00 - 11:30<br>15:00 - 17:30</td></tr><tr><th class="lead">Až</th></tr><tr><th>Čtvrtek</th></tr></tbody>
+      </table>
+      <table class="timetable__week">
+        <tbody>
+        <tr>
+          <th>Pátek</th>
+          <td>9:00 - 11:30</td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="timetable__week">
+        <tbody>
+        <tr>
+          <th>Sobota</th>
+          <td rowspan="2">Zavřeno</td>
+        </tr>
+        <tr>
+          <th>Neděle</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="about">
+    <article>
+      <div><h2>MVDr. Dana Zemancová</h2>
+        <p>Již od roku 1995 poskytuje odbornou preventivní péči a léčbu <strong>psů</strong>,<strong>
+          koček</strong> a dalších <strong>malých zvířat</strong>. Nabízené služby zahrnují drobné úkony
+          jako <strong>očkování</strong>, <strong>čipování</strong> nebo <strong>odčervení</strong>. Dále
+          poskytujeme <strong>laboratorní</strong> a <strong>mikroskopická</strong> vyšetření a
+          drobné<strong> chirurgické zákroky</strong>.</p></div>
+      <div class="about__img"><img src="/static/media/veterinar.259c999b.jpg"
+                                   alt="Veterinářka Dana Zemancová"></div>
+    </article>
+  </section>
+  <section id="contact">
+    <div class="contact-grid">
+      <h2 class="contact-header">Kontakt</h2>
+      <div class="contact-info"><a class="link contact-info__link" href="tel:+420385511793"><img
+        class="svg-icon" src="/static/media/phone.fa0965d0.svg"
+        alt="Ikona Telefonu"><span>+ 420 385 511 793</span></a><a
+        class="link contact-info__link" href="#end"><img class="svg-icon"
+                                                         src="/static/media/location.4a20f9e1.svg"
+                                                         alt="Ikona Lokace"><span>V. Volfa 45, České Budějovice</span></a><a
+        class="link contact-info__link" href="#end"><img class="svg-icon"
+                                                         src="/static/media/bus.4da44d83.svg"
+                                                         alt="Ikona Autobusové zastávky"><span>Jaroslava Bendy</span></a>
+      </div>
+      <vet-form></vet-form>
+    </div>
+  </section>
+  <section id="gallery">
+    <h3>Galerie</h3>
+    <vet-gallery></vet-gallery>
+  </section>
+
+  <vet-modal agree-btn-label="Souhlasím"><article class="terms" ><h2>Zásady ochrany osobních údajů</h2>
+        <p>Provozovatel webu: <a href="https://hynekzemanec.me/" target="_blank"
+                                 rel="noopener noreferrer">Hynek Zemanec</a> <br> IČO: 04393597<br>Se
+          sídlem Stará cesta 7, České Budějovice<br>Kontaktní e-mail: <a
+            href="mailto:hynek@hynekzemanec.cz">hynek@hynekzemanec.cz</a></p>
+        <h3>Jak data sbíráme?</h3>
+        <p>Při odeslání formuláře je zpráva s Vaší emailovou adresou zaslána na speciálně zřízený email,
+          který spravuje MVDr. Dana Zemancová.</p>
+        <h3>Jaká data sbíráme a proč?</h3>
+        <p>Pro účely komunikace uchováváme následující data:</p>
+        <ul>
+          <li><strong>Vaše emailová adresa</strong></li>
+          <li><strong>Předmět Vaší zprávy</strong></li>
+          <li><strong>Obsah elektronické komunikace</strong></li>
+        </ul>
+        <p>Tato data sbíráme, abychom vám mohli odpovědět na dotazy či připomínky, které skrze formulář
+          zašlete. Tyto údaje nikde veřejně neuvádíme.</p>
+        <h3>Jak dlouho data uchováváme?</h3>
+        <p>Data jsou uchovávána po dobu nezbytně nutnou pro odpověď, maximálně však 1 rok.</p>
+        <h3>Kdo osobní údaje zpracovává?</h3>
+        <p>Zpracovatelem těchto údajů je:</p>
+        <p>Hynek Zemanec (IČO 04393597, se sídlem Stará cesta 7, České Budějovice), který provozuje
+          tento web. </p>
+        <p>MVDr. Dana Zemancová (IČO 60077361, se sídlem V. Volfa 45, 370 05 České Budějovice), která
+          odpovídá na Vaše dotazy.</p>
+        <h3>Jaká jsou má práva?</h3>
+        <ul>
+          <li><strong>Právo na odvolání souhlasu</strong> - Kdykoli můžete odvolat dříve udělený
+            souhlas se zpracováním Vašich osobních údajů.
+          </li>
+          <li><strong>Právo na informace</strong> - Můžete se dotázat, jaké údaje zpracováváme, za
+            jakým účelem, v jakém rozsahu, jak dlouho a kdo k nim má přístup.
+          </li>
+          <li><strong>Právo na opravu či výmaz</strong> - Kdykoli můžete požádat o opravu či výmaz
+            Vašich osobních údajů.
+          </li>
+        </ul>
+        <p>Pro uplatnění kteréhokoliv práva zmíněného výše kontaktujte Provozovatele webu, a to
+          e-mailem, popř. písemně.</p>
+        <p class="center"><em>Tyto Zásady ochrany osobních údajů jsou platné a účinné od 1. 4.
+          2020.</em></p></article></vet-modal>
+</main>
+<footer id="end">
+  <vet-map></vet-map>
+  <p>© <span id="year">2020</span> with <a href="https://hynekzemanec.me/" class="author"><span
+    style="color: red;">♥</span> Hynek Zemanec</a></p></footer>
+
+
+  <style>
+    :root {
+      --primary: #6894ea;
+      --secondary: var(--white);
+      --black: black;
+      --white: white;
+      --primary-darker: #567bc5;
+      --shadow: 0 7px 6px 0px rgba(0, 0, 0, 0.1);
+      --shadow-color: 0 0 10px 7px rgba(89, 128, 205, 0.15);
+      --text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+      --filter-shadow: drop-shadow(0px 0px 6px rgba(89, 128, 205, 0.15));
+      --font-family: Nunito, sans-serif;;
+    }
+    /*Changed START*/
+
+    body{
+      margin:0;
+    }
+
+    .link{
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--secondary);
+      text-decoration: underline;
+      transition: all 150ms ease-in-out;
+    }
+
+    .link:hover{
+      text-shadow: 1px 0 currentColor;
+    }
+
+    article.terms h2 {
+      color: black;
+      font-size: 4rem;
+    }
+    article.terms h3 {
+      font-size: 2.8rem;
+      color: black;
+      text-align: left;
+      margin-bottom: 0.8rem;
+    }
+    article.terms p {
+      display: block;
+      text-align: left;
+      font-size: 1.6rem;
+      color: black;
+      margin-bottom: 1.2rem;
+    }
+    article.terms li {
+      font-size: 1.6rem;
+    }
+    article.terms .center {
+      text-align: center;
+    }
+
+    /*Changed END*/
+
+    html {
+      font-size: 62.5%;
+    }
+
+    * {
+      font-family: "Nunito", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+      text-shadow: var(--text-shadow);
+    }
+
+    h1 {
+      font-size: 7rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    table {
+      margin: 0 auto;
+      min-width: 230px;
+    }
+
+    th {
+      font-size: 2.1rem;
+      text-align: left;
+      width: 35%;
+    }
+
+    @media (min-width: 768px) {
+      th {
+        font-size: 2.4rem;
+      }
+    }
+
+    td {
+      font-size: 2.2rem;
+      line-height: 2.4;
+      font-weight: 800;
+      text-align: center;
+      width: 65%;
+    }
+
+    @media (min-width: 768px) {
+      td {
+        font-size: 2.8rem;
+      }
+    }
+
+    main {
+      display: grid;
+      background-color: var(--secondary);
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 0 20px;
+      position: relative;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 1190px) 1fr;
+    }
+
+    section > * {
+      grid-column: 2/3;
+    }
+
+    .p-section {
+      height: 100vh;
+    }
+
+    #home {
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+
+    #home:after {
+      z-index: 1;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    @media (min-width: 992px) {
+      #home:after {
+        display: none;
+      }
+    }
+
+    #hours {
+      justify-items: center;
+      position: relative;
+      grid-column: 1/-1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 125.331%;
+      /* TODO background image asset? */
+      background-image: url(/Assets/svg/transition-top.svg);
+      left: -1%;
+      right: -1%;
+      width: 102%;
+    }
+
+    @media (min-width: 768px) {
+      #hours {
+        justify-items: left;
+      }
+    }
+
+    #hours .timetable {
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      #hours .timetable {
+        margin-left: 5%;
+      }
+    }
+
+    #hours .timetable::after {
+      display: none;
+      content: "";
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background-position: 30px 0px;
+      height: 100%;
+      width: 150%;
+      animation: kenburns 30s alternate infinite;
+    }
+
+    @media (min-width: 768px) {
+      #hours .timetable::after {
+        display: block;
+        background: url(/static/media/arrow.0bc5704a.svg) no-repeat;
+        filter: drop-shadow(rgba(89, 128, 205, 0.15) 0px 0px 10px);
+      }
+    }
+
+    #about {
+      height: 80vh;
+      /*margin-bottom: 250px;*/
+    }
+
+    #contact {
+      background: var(--primary);
+      scroll-margin-top: 250px;
+      margin: 17.546% 0 17.546% 0;
+    }
+
+    #contact::before {
+      pointer-events: none;
+      content: "";
+      z-index: 1;
+      position: absolute;
+      padding-top: 14.886%;
+      bottom: calc(100% - 10px);
+      /*height: 250px;*/
+      left: -1%;
+      right: -1%;
+      width: 102%;
+      /* TODO */
+      background: url(/Assets/svg/contact-top.svg) no-repeat center;
+      background-size: cover;
+      filter: brightness(0.961);
+    }
+
+    #contact::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      top: calc(100% - 10px);
+      padding-top:17.546%;
+      left: -1%;
+      right: -1%;
+      width: 102%;
+      z-index: 1;
+      /* TODO */
+      background: url(/Assets/svg/contact-bottom.svg) no-repeat center;
+      background-size: cover;
+      filter: brightness(0.961);
+    }
+
+    .contact-header {
+      color: white;
+      grid-column: 1/-1;
+      text-align: center;
+      font-size: 4.8rem;
+      font-weight: 800;
+      line-height: 1;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .contact-header {
+        margin-bottom: 4rem;
+        font-size: 6.8rem;
+      }
+    }
+
+    .contact-header::after {
+      position: absolute;
+      content: "";
+      width: 41px;
+      height: 4px;
+      left: 50%;
+      bottom: -1rem;
+      transform: translateX(-50%);
+      background-color: var(--white);
+      border-radius: 5px;
+    }
+
+    #gallery {
+      margin: 0 0 25px 0;
+    }
+
+    @media (min-width: 1280px) {
+      #gallery {
+        margin: 0 0 100px 0;
+      }
+    }
+
+    #gallery h3 {
+      font-size: 4rem;
+      line-height: 1.2;
+      font-weight: 700;
+      position: relative;
+      color: var(--black);
+    }
+
+    #gallery h3:after {
+      position: absolute;
+      content: "";
+      width: 41px;
+      height: 4px;
+      left: 0;
+      bottom: -1rem;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+      border-radius: 5px;
+    }
+
+    article {
+      display: grid;
+      grid-gap: 4rem;
+      grid-auto-flow: dense;
+      align-items: center;
+      margin-top: 3.6rem;
+    }
+
+    @media (min-width: 768px) {
+      article {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 8rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      article .about__img {
+        grid-row: 1/-1;
+      }
+    }
+
+    article h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      article h2 {
+        font-size: 3.2rem;
+      }
+    }
+
+    article h2:after {
+      position: absolute;
+      content: "";
+      width: 41px;
+      height: 4px;
+      left: 0px;
+      bottom: -1rem;
+      border-radius: 5px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+    }
+
+    article p {
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 768px) {
+      article p {
+        font-size: 1.8rem;
+      }
+    }
+
+    .contact-grid {
+      position: relative;
+      z-index: 5;
+      /*margin-top: -110px;*/
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid {
+        margin-top: 0;
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      position: relative;
+      padding: 30px;
+      max-height: 300px;
+      margin-top: 7rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-info:before {
+      left: 0;
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+      border-radius: 15px;
+      z-index: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info__link {
+      color: white;
+      z-index: 1;
+      font-weight: 600;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      text-shadow: var(--text-shadow);
+    }
+
+    @media (min-width: 768px) {
+      .contact-info__link {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .contact-info__link {
+        font-size: 3.2rem;
+      }
+    }
+
+    .contact-info__link .svg-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 20px;
+      transition: all 150ms ease-in-out;
+    }
+
+    @media (min-width: 768px) {
+      .contact-info__link .svg-icon {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .contact-info__link .svg-icon {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+
+    .contact-info__link:hover .svg-icon, .contact-info__link:focus .svg-icon {
+      transform: scale(1.05);
+      transition: all 150ms ease-in-out;
+    }
+
+    .timetable {
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-color);
+      max-width: 580px;
+      padding: 20px 30px;
+      height: max-content;
+      margin-bottom: 110px;
+      margin-top: 60px;
+    }
+
+    @media (min-width: 576px) {
+      .timetable {
+        padding: 27px 60px;
+      }
+    }
+
+    .timetable > * {
+      margin-bottom: 2.4rem;
+      position: relative;
+    }
+
+    .timetable > *:not(:last-child)::after {
+      position: absolute;
+      content: "";
+      width: 60px;
+      height: 5px;
+      left: 50%;
+      bottom: -1.5rem;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-darker) 100%);
+      border-radius: 5px;
+    }
+
+    .timetable h2 {
+      text-align: center;
+    }
+
+    @media (min-width: 576px) {
+      .timetable h2 {
+        font-size: 3.8rem;
+      }
+    }
+
+    .timetable__week {
+      width: 100%;
+    }
+
+    header {
+      width: 100%;
+      height: 65px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        top: 0;
+        bottom: unset;
+      }
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-gap: 20px;
+    }
+
+    .gallery__img {
+      width: 100%;
+      height: 100%;
+      min-height: 85px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: var(--shadow-color);
+      transition: all 150ms ease-in-out;
+    }
+
+    .gallery__img:hover, .gallery__img:focus {
+      outline: none;
+      transform: scale(1.05);
+      transition: all 150ms ease-in-out;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .white {
+      color: var(--white);
+    }
+
+    .hero {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      grid-column: 1;
+      animation: kenburns 20s alternate infinite;
+    }
+
+    .link {
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--secondary);
+      text-decoration: underline;
+      transition: all 150ms ease-in-out;
+    }
+
+    .link:hover {
+      text-shadow: 1px 0 currentColor;
+    }
+
+    .hero-description {
+      z-index: 5;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-self: center;
+      max-width: 320px;
+    }
+
+    @media (min-width: 576px) {
+      .hero-description {
+        max-width: 524px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero-description {
+        justify-self: left;
+      }
+    }
+
+    .hero-description h1 {
+      font-size: 4.1rem;
+      line-height: 55px;
+      text-transform: uppercase;
+      font-weight: 800;
+      text-align: center;
+      opacity: 0;
+      background: linear-gradient(90deg, var(--primary), #3f5093, var(--primary-darker));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: var(--filter-shadow);
+    }
+
+    .hero-description__subheader {
+      opacity: 0;
+    }
+
+    @media (min-width: 576px) {
+      .hero-description h1 {
+        font-size: 7.4rem;
+        line-height: 101px;
+      }
+    }
+
+    .hero-description p {
+      font-size: 2.4rem;
+      font-weight: lighter;
+      text-align: center;
+    }
+
+    @media (min-width: 576px) {
+      .hero-description p {
+        font-size: 3rem;
+      }
+    }
+
+    .about__img {
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .about__img img {
+      object-fit: cover;
+      border-radius: 15px;
+      width: 100%;
+      height: auto;
+      box-shadow: var(--shadow-color);
+      animation: kenburns 30s alternate infinite;
+    }
+
+    .longer-text {
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .longer-text:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 50%;
+      height: 100%;
+      width: 5px;
+      border-radius: 5px;
+      background-color: var(--secondary);
+      transform: translateY(-50%);
+    }
+
+    footer {
+      background: var(--primary-darker);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    footer p {
+      text-align: center;
+      color: var(--secondary);
+      padding: 26px 0;
+    }
+
+    footer .author {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @keyframes kenburns {
+      0% {
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale3d(1.1, 1.1, 1.1) translate3d(-10px, -5px, 0px);
+        animation-timing-function: ease-in;
+        opacity: 1;
+      }
+    }
+
+  </style>
+
+</body>
+</html>
