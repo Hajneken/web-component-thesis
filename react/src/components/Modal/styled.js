@@ -11,6 +11,16 @@ export const Backdrop = styled.div`
             transform: translate(0, 100%);
             opacity: 0;
             
+            .backdropBtn{
+              width: 100%;
+              height: 100%;
+              background: transparent;
+              border: none;
+              &:hover{
+                background: rgba(0,0,0,0.6);
+              }
+            }
+            
             a{
             display: ${props => !props.opened ? `none` : `inline`}; 
             }
@@ -29,7 +39,6 @@ export const Backdrop = styled.div`
                 overflow-y: scroll;
                 scrollbar-width: thin;
                 scrollbar-color: blue;
-              
             }
             
             button{

@@ -13,10 +13,7 @@ const Timetable = () => {
                             <td rowSpan="5">9:00 - 11:30<br />15:00 - 17:30</td>
                         </tr>
                         <tr>
-                            <th>Úterý</th>
-                        </tr>
-                        <tr>
-                            <th>Středa</th>
+                            <th className="lead">Až</th>
                         </tr>
                         <tr>
                             <th>Čtvrtek</th>

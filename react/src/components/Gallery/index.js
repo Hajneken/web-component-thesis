@@ -40,7 +40,7 @@ const Gallery = props => {
   const initIndex = target => {
     for (let i = 0; i < imgArr.length; i++) {
       if (imgArr[i].alt === target.alt) {
-          console.log(i);
+          // console.log(i);
         return i;
       } else {
       }
@@ -81,6 +81,7 @@ const Gallery = props => {
       { opacity: 0, x: "100%" },
       { opacity: 1, x: 0, ease: "power4.out", duration: 0.5 }
     );
+    // next img until last, then start from the beginning again
     setCurrentIndex((currentIndex + 1) % imgArr.length);
   };
 
@@ -90,6 +91,7 @@ const Gallery = props => {
       { opacity: 0, x: "-100%" },
       { opacity: 1, x: 0, ease: "power4.out", duration: 0.5 }
     );
+    // 
     setCurrentIndex(
       currentIndex === 0
         ? imgArr.length - 1
@@ -168,6 +170,13 @@ const Gallery = props => {
             className="gallery__fullscreen"             
             style={!opened ? {opacity:"0"} : {opacity:'1'}}
             >
+            <button 
+            type="button" 
+            onClick={handleClose}
+            aria-label="Zavřít"
+            className="backdropBtn"
+            tabIndex={!opened ? -1 : 0}
+            ></button>
           <div className="gallery__img-wrap">
           <img
               aria-labelledby="galleryImgLabel"

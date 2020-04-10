@@ -51,7 +51,7 @@ textarea:-webkit-autofill:focus{
     border: none;
     resize: none;
     outline: none;
-    ${props => props.valid && `color: #28a745;` } 
+    ${'' /* ${props => props.valid && `color: #28a745;` }  */}
   }
   
   label{
@@ -91,7 +91,8 @@ textarea:-webkit-autofill:focus{
     outline: none;
     width: 99%;
     padding: 1rem;
-    min-height: 200PX;
+    min-height: 200px;
+    resize:vertical;
   }
 `;
 

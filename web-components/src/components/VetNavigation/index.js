@@ -150,7 +150,6 @@ class VetNavigation extends HTMLElement{
             .forEach(section => observer.observe(section));
     }
 
-    // Máme active, ale jak to odvolat?
     setActiveLink(index){
         // select link from list of nav-link elements
         const navLinkArray = this.nav.querySelectorAll('nav-link');

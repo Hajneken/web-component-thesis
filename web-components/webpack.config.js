@@ -2,8 +2,9 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
+const stencil = require('@stencil/webpack');
 
-const libraryName = 'veterinaMajBundle'; // TODO: Change me
+const libraryName = 'veterinaJSBundle'; // TODO:
 const outputFile = `${libraryName}.min.js`;
 
 
@@ -51,10 +52,11 @@ module.exports = {
         ],
     },
     plugins: [
+        new stencil.StencilPlugin(),
         new uglifyJsPlugin(),
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
 };

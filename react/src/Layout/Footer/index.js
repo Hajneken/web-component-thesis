@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Map from '../../components/Map'
 
 
@@ -14,7 +14,7 @@ const Footer = () => {
             <p>&copy;{" "}
             <span id="year">{date}</span>
                 {' with '}
-                <a href="https://hynekzemanec.me/" className="author"><span style={{color:'red'}}>♥</span> Hynek Zemanec</a>
+                <a href="https://hynekzemanec.me/" target="_blank" rel="noopener noreferrer" className="author"><span style={{color:'red'}}>♥</span> Hynek Zemanec</a>
             </p>
         </footer>
     );

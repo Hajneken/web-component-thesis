@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "./styled";
-
-import Modal from '../../components/Modal'
 import Input from "./Input";
-
-import Terms from '../../components/Terms'
 
 import submittedSVG from "../../Assets/svg/submitted.svg";
 
@@ -29,9 +25,6 @@ const MessageForm = (props) => {
   const [inputSubjectValue, setInputSubjectValue] = useState("");
   const [inputTextValue, setInputTextValue] = useState("");
   
-  useEffect(()=>{
-    console.log()
-  })
 
   const encode = (data) => {
     return Object.keys(data)
@@ -56,7 +49,7 @@ const MessageForm = (props) => {
     setFormValid(inputEmailValid && inputSubjectValid && inputTextValid);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     switch (e.target.name) {
       case "email":
         setInputEmailValue(e.target.value);
@@ -73,15 +66,23 @@ const MessageForm = (props) => {
   };
 
   const validateEmail = e => {
-    //   https://www.w3resource.com/javascript/form/email-validation.php
-    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const mailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setInputEmailValid(mailFormat.test(e.target.value));
     validateForm();
   };
 
-  const validateText = e => {
-    e.target.name === 'subject' && setInputSubjectValid(inputSubjectValue.length >= props.minChars);
-    e.target.name === 'message' && setInputTextValid(inputTextValue.length >= props.minChars);
+  const validateText = (e, criteria) => {
+    e.target.name === 'subject' && setInputSubjectValid(
+      (inputSubjectValue.length >= criteria.minChars) 
+      &&
+      (inputSubjectValue.length <= criteria.maxChars));
+    
+    e.target.name === 'message' && setInputTextValid(
+      (inputTextValue.length >= criteria.minChars)
+      &&
+      (inputTextValue.length <= criteria.maxChars));
     validateForm();
   };
   
@@ -90,19 +91,19 @@ const MessageForm = (props) => {
   }
 
 //   when leaving input make validation
-  const handleBlur = e => {
+  const handleBlur = (e, criteria) => {
     switch (e.target.name) {
       case "email":
         validateEmail(e);
         break;
       case "subject":
-        validateText(e);
+        validateText(e, criteria);
         break;
       case "message":
-        validateText(e);
+        validateText(e, criteria);
         break;
       default:
-        validateText(e);
+        console.log(e.target)
         break;
     }
     
@@ -110,7 +111,8 @@ const MessageForm = (props) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} data-netlify="true">
+    <Form onSubmit={handleSubmit}
+     data-netlify="true">
       {!submitted ? (
         <>
           <Input
@@ -126,7 +128,7 @@ const MessageForm = (props) => {
             valid={inputEmailValid}
             errorMsg={'Musí být ve tvaru nazev@domena.cz'}
           >
-            e-mail
+            e-mail *
           </Input>
           <Input
             id="subjectInput"
@@ -138,10 +140,10 @@ const MessageForm = (props) => {
             onInputFocus={handleFocus}
             onInputBlur={handleBlur}
             valid={inputSubjectValid}
-            minChars={2}
+            minChars={4}
             maxChars={40}
           >
-            Předmět zprávy
+            Předmět zprávy *
           </Input>
           <Input
             id="messageText"
@@ -156,7 +158,7 @@ const MessageForm = (props) => {
             minChars={5}
             maxChars={2000}
           >
-            Vaše zpráva
+            Vaše zpráva *
           </Input>
           <div className="form__terms">
             <span>Odesláním souhlasíte se{' '}</span>

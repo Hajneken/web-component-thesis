@@ -19,7 +19,6 @@ const Modal = props => {
 
     useEffect(() => {
         (!!currentFocus) && currentFocus.current.focus();
-        console.log('currentFocus: ', currentFocus)
     },[currentFocus])
 
     //   When opened prevent background scroll and
@@ -75,7 +74,7 @@ const Modal = props => {
                   break;
           }
       }
-  };
+  }
 
   const handleTabNext = e => {
       if(e.currentTarget === agreeRef.current){
@@ -94,13 +93,20 @@ const Modal = props => {
 
 
   return (
-    <>
     <Backdrop ref={el => backdropRef = el}
               opened={props.opened}
               >
+            <button 
+            type="button" 
+            aria-label="Zavřít"
+            className="backdropBtn"
+            tabIndex={!props.opened ? -1 : 0}
+            onClick={props.closeMethod}></button>
           <div aria-hidden={!props.opened}
                role="dialog"
-               className="content">
+               className="content"
+               >
+               
           <button
               type="button"
               className="close"
@@ -129,7 +135,6 @@ const Modal = props => {
               }
           </div>
       </Backdrop>      
-    </>
   );
 };
 

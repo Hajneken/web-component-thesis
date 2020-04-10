@@ -136,7 +136,7 @@ const Navigation = () => {
       gsap.fromTo(
         ".main-navigation",
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, ease: "ease-out", duration: 0.25 }
+        { opacity: 1, y: 0, ease: "Bounce.easeOut", duration: 1.25 }
       );
     } else {
       gsap.fromTo(

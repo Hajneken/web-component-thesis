@@ -12,15 +12,19 @@ import phone from   '../../Assets/svg/phone.svg'
 import location from   '../../Assets/svg/location.svg'
 import bus from   '../../Assets/svg/bus.svg'
 
+// Hero
+import hero from '../../Assets/img/zahlavi.png'
+
 //JPG
 import about from '../../Assets/img/veterinar.jpg'
 
-//img
+//Gallery
 import ambulance from "../../Assets/img/ambulance.jpg";
 import room1 from "../../Assets/img/cekarna1.jpg";
 import room2 from "../../Assets/img/cekarna2.jpg";
 import ordinace from "../../Assets/img/ordinace.jpg";
-import hero from '../../Assets/img/zahlavi.png'
+
+
 import Terms from "../../components/Terms";
 import Modal from "../../components/Modal";
 
@@ -29,7 +33,9 @@ const Main = () => {
 
     const [modalBtn, setModalBtn] = useState(null);
     const [modalOpened, setModalOpened] = useState(false);
+    
     const handleModalToggle = (e) => {
+        e.preventDefault();
         setModalOpened(!modalOpened);
         setModalBtn(e.target);
     }

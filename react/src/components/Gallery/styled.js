@@ -19,6 +19,16 @@ export const StyledGallery = styled.div`
             width: 100%;
             background: rgba(0,0,0,0.7);
             
+            .backdropBtn{
+              width: 100%;
+              height: 100%;
+              background: transparent;
+              border: none;
+              &:hover{
+                background: rgba(0,0,0,0.6);
+              }
+            }
+            
             .gallery__img-wrap{
               box-shadow: var(--shadow-color);
               position: absolute;

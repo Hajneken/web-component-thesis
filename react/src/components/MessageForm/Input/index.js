@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { InputWrapper, Error } from "./styled";
 
 const Input = props => {
   
   const formFieldRef = useRef();
+  
+  const initValidation = (e) => {
+    e.target.name === 'email' ? props.onInputBlur(e) :
+    props.onInputBlur(e, {minChars:props.minChars, maxChars:props.maxChars})
+  }
 
 
   return (
@@ -22,7 +27,7 @@ const Input = props => {
           type={!!props.type ? props.type : "text"}
           onChange={props.onChangeValue}
           onFocus={props.onInputFocus}
-          onBlur={props.onInputBlur}
+          onBlur={initValidation}
           maxLength={props.maxChars}
           minLength={props.minChars}
           required
@@ -37,7 +42,7 @@ const Input = props => {
           name={!!props.name ? props.name : props.id}
           onChange={props.onChangeValue}
           onFocus={props.onInputFocus}
-          onBlur={props.onInputBlur}
+          onBlur={initValidation}
           maxLength={props.maxChars}
           minLength={props.minChars}
           required

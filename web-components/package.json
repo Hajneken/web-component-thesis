@@ -6,11 +6,14 @@
   "author": "Hynek Zemanec",
   "license": "MIT",
   "dependencies": {
+    "@ionic/core": "^5.0.7",
+    "@stencil/core": "^1.12.3",
     "gsap": "^3.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@stencil/webpack": "^0.0.6",
     "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
