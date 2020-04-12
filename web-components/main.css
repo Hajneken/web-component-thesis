@@ -10,7 +10,10 @@
     --filter-shadow: drop-shadow(0px 0px 6px rgba(89, 128, 205, 0.15));
 }
 
+@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:200;src:local("Nunito ExtraLight"),local("Nunito-ExtraLight"),url(/static/media/nunito-latin-ext-200.36a6de37.woff2) format("woff2"),url(/static/media/nunito-latin-ext-200.263f3550.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:200;src:local("Nunito ExtraLight Italic"),local("Nunito-ExtraLightItalic"),url(/static/media/nunito-latin-ext-200-italic.fb382e63.woff2) format("woff2"),url(/static/media/nunito-latin-ext-200-italic.da729574.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:300;src:local("Nunito Light"),local("Nunito-Light"),url(/static/media/nunito-latin-ext-300.2df4e87e.woff2) format("woff2"),url(/static/media/nunito-latin-ext-300.b8727d7e.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:300;src:local("Nunito Light Italic"),local("Nunito-LightItalic"),url(/static/media/nunito-latin-ext-300-italic.2c6f29b2.woff2) format("woff2"),url(/static/media/nunito-latin-ext-300-italic.181a7959.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:400;src:local("Nunito Regular"),local("Nunito-Regular"),url(/static/media/nunito-latin-ext-400.597b3971.woff2) format("woff2"),url(/static/media/nunito-latin-ext-400.a541f260.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:400;src:local("Nunito Italic"),local("Nunito-Italic"),url(/static/media/nunito-latin-ext-400-italic.c794803c.woff2) format("woff2"),url(/static/media/nunito-latin-ext-400-italic.161005f9.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:600;src:local("Nunito SemiBold"),local("Nunito-SemiBold"),url(/static/media/nunito-latin-ext-600.598d975d.woff2) format("woff2"),url(/static/media/nunito-latin-ext-600.92495f77.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:600;src:local("Nunito SemiBold Italic"),local("Nunito-SemiBoldItalic"),url(/static/media/nunito-latin-ext-600-italic.cf30fb32.woff2) format("woff2"),url(/static/media/nunito-latin-ext-600-italic.04e88afc.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:700;src:local("Nunito Bold"),local("Nunito-Bold"),url(/static/media/nunito-latin-ext-700.5e4f8e0b.woff2) format("woff2"),url(/static/media/nunito-latin-ext-700.54866500.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:700;src:local("Nunito Bold Italic"),local("Nunito-BoldItalic"),url(/static/media/nunito-latin-ext-700-italic.3e040147.woff2) format("woff2"),url(/static/media/nunito-latin-ext-700-italic.b95cead6.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:800;src:local("Nunito ExtraBold"),local("Nunito-ExtraBold"),url(/static/media/nunito-latin-ext-800.c3b30051.woff2) format("woff2"),url(/static/media/nunito-latin-ext-800.60391341.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:800;src:local("Nunito ExtraBold Italic"),local("Nunito-ExtraBoldItalic"),url(/static/media/nunito-latin-ext-800-italic.c0b657c4.woff2) format("woff2"),url(/static/media/nunito-latin-ext-800-italic.98fa35e5.woff) format("woff")}@font-face{font-family:"Nunito";font-style:normal;font-display:swap;font-weight:900;src:local("Nunito Black"),local("Nunito-Black"),url(/static/media/nunito-latin-ext-900.d5314a7c.woff2) format("woff2"),url(/static/media/nunito-latin-ext-900.ececcef1.woff) format("woff")}@font-face{font-family:"Nunito";font-style:italic;font-display:swap;font-weight:900;src:local("Nunito Black Italic"),local("Nunito-BlackItalic"),url(/static/media/nunito-latin-ext-900-italic.fac776b2.woff2) format("woff2"),url(/static/media/nunito-latin-ext-900-italic.e43b74dc.woff) format("woff")}
+
 html {
+    scroll-behavior: smooth;
     font-size: 62.5%;
 }
 
@@ -126,8 +129,7 @@ section > * {
     background-repeat: no-repeat;
     background-size: cover;
     height: 125.331%;
-    /* TODO background image asset? */
-    background-image: url(/Assets/svg/transition-top.svg);
+    background-image: url(/static/media/transition-top.573f8d2a.svg);
     left: -1%;
     right: -1%;
     width: 102%;
@@ -165,7 +167,22 @@ section > * {
     #hours .timetable::after {
         display: block;
         background: url(/static/media/arrow.0bc5704a.svg) no-repeat;
-        filter: drop-shadow(rgba(89, 128, 205, 0.15) 0px 0px 10px);
+        filter: drop-shadow(0 0 10px rgba(89, 128, 205, 0.15));
+    }
+}
+
+.timetable .lead {
+    padding: 0 0 0 2.6rem;
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+    background: linear-gradient(90deg, var(--primary), #3f5093, var(--primary-darker));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+@media (min-width: 1280px) {
+    .timetable .lead {
+        padding: 0 0 0 3.3rem;
     }
 }
 
@@ -191,8 +208,7 @@ section > * {
     left: -1%;
     right: -1%;
     width: 102%;
-    /* TODO */
-    background: url(/Assets/svg/contact-top.svg) no-repeat center;
+    background: url(/static/media/contact-top.8c7b2ee6.svg) no-repeat center;
     background-size: cover;
     filter: brightness(0.961);
 }
@@ -207,8 +223,7 @@ section > * {
     right: -1%;
     width: 102%;
     z-index: 1;
-    /* TODO */
-    background: url(/Assets/svg/contact-bottom.svg) no-repeat center;
+    background: url(/static/media/contact-bottom.04fcdfed.svg) no-repeat center;
     background-size: cover;
     filter: brightness(0.961);
 }
@@ -499,8 +514,31 @@ header {
     transition: all 150ms ease-in-out;
 }
 
-html {
-    scroll-behavior: smooth;
+vet-modal article {
+    display: block;
+}
+vet-modal article h2 {
+    color: black;
+    font-size: 4rem;
+}
+vet-modal article h3 {
+    font-size: 2.8rem;
+    color: black;
+    text-align: left;
+    margin-bottom: 0.8rem;
+}
+vet-modal article p {
+    display: block;
+    text-align: left;
+    font-size: 1.6rem;
+    color: black;
+    margin-bottom: 1.2rem;
+}
+vet-modal article li {
+    font-size: 1.6rem;
+}
+vet-modal article .center {
+    text-align: center;
 }
 
 .white {
@@ -657,3 +695,8 @@ footer .author {
   }
 }
 
+@media (max-width: 768px) {
+    footer{
+        padding-bottom: 65px;
+    }
+}

@@ -23,11 +23,9 @@ form{
   &:before {
     content: '';
     position: absolute;
-    // TODO SVG
-    //background-image: url(TODO);
-    //background-repeat: no-repeat;
-    background: red;
+    background-image: url(/static/media/email.1aea6d14.svg);
     filter: invert(1);
+    background-repeat: no-repeat;
     width: 7rem;
     height: 7rem;
     left: 50%;
@@ -130,5 +128,21 @@ form{
       }
     }
   }
+}
+
+div{
+  h3{
+    font-size: 3.2rem;
+    color:var(--white);
+    grid-column: 1/-1;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+  grid-column: 1/-1;
+  width: 100%;
+  text-align: center;
+  color:var(--secondary);
 }
 

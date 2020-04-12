@@ -520,6 +520,12 @@ footer .author {
   color: var(--secondary);
   text-decoration: none;
   font-weight: bold; }
+  
+ @media (max-width: 768px) {
+    footer{
+        padding-bottom: 65px;
+    }
+}
 
 `
 

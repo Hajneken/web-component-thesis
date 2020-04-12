@@ -1,4 +1,4 @@
-import {Component, ComponentInterface, h, State, Listen } from '@stencil/core';
+import {Component, ComponentInterface, h, State, Listen, Host} from '@stencil/core';
 
 @Component({
   tag: 'vet-form',
@@ -55,61 +55,62 @@ export class VetForm implements ComponentInterface {
     this.formValid = (!!this.inputEmailValue && !!this.inputSubjectValue && !!this.inputTextValue);
   };
 
-
   render() {
     return (
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <vet-form-input
-            fieldId="emailInput"
-            element="input"
-            type="email"
-            name="email"
-            errorMsg={'Musí být ve tvaru nazev@domena.cz'}
-          >
-            e-mail *
-          </vet-form-input>
-          <vet-form-input
-            fieldId="subjectInput"
-            element="input"
-            name="subject"
-            minChars={4}
-            maxChars={40}
-          >
-            Předmět zprávy *
-          </vet-form-input>
-          <vet-form-input
-            fieldId="messageText"
-            name="message"
-            element="textarea"
-            minChars={5}
-            maxChars={2000}
-          >
-            Vaše zpráva *
-          </vet-form-input>
-          <div class="form__terms"><span>Odesláním souhlasíte se </span>
+      <Host>
+        {!this.submitted ?
+        (
+          <form onSubmit={(e) => this.handleSubmit(e)}>
+            <vet-form-input
+              fieldId="emailInput"
+              element="input"
+              type="email"
+              name="email"
+              errorMsg={'Musí být ve tvaru nazev@domena.cz'}
+            >
+              e-mail *
+            </vet-form-input>
+            <vet-form-input
+              fieldId="subjectInput"
+              element="input"
+              name="subject"
+              minChars={4}
+              maxChars={40}
+            >
+              Předmět zprávy *
+            </vet-form-input>
+            <vet-form-input
+              fieldId="messageText"
+              name="message"
+              element="textarea"
+              minChars={5}
+              maxChars={2000}
+            >
+              Vaše zpráva *
+            </vet-form-input>
+            <div class="form__terms"><span>Odesláním souhlasíte se </span>
+              <button
+                class="_modal-trigger"
+                type="button"
+                aria-label="Otevřít modální dialogové okno s podmínkami"
+                style={{fontSize: `1.6rem`}}>zpracováním osobních údajů.
+              </button>
+            </div>
             <button
-              class="_modal-trigger"
-              type="button"
-              aria-label="Otevřít modální dialogové okno s podmínkami"
-              style={{fontSize:`1.6rem`}}>zpracováním osobních údajů.</button>
+              class={!!this.formValid && 'valid'}
+              disabled={!this.formValid}
+              onMouseEnter={() => this.validateForm()}
+            >Odeslat
+            </button>
+          </form>
+        ) : (
+          <div>
+            <h3>Děkujeme Vám za zprávu!</h3>
+            <img src="/static/media/submitted.fd4d8459.svg" alt=""/>
+            <p>Brzy se Vám ozveme</p>
           </div>
-          {/*<div class="form__terms">*/}
-          {/*  <span>Odesláním souhlasíte se{' '}</span>*/}
-          {/*  <button*/}
-          {/*    style={{fontSize:'1.6rem'}}*/}
-          {/*    class="link"*/}
-          {/*    type="button"*/}
-          {/*    onFocus={() => this.validateForm()}*/}
-          {/*    aria-label="Otevřít modální dialogové okno s podmínkami"*/}
-          {/*    onClick={props.openModal}>zpracováním osobních údajů.</button>*/}
-          {/*</div>*/}
-          <button
-            class={!!this.formValid && 'valid'}
-            disabled={!this.formValid}
-            onMouseOver={() => this.validateForm()}
-          >Odeslat
-          </button>
-        </form>
+        )}
+      </Host>
     );
   }
 }

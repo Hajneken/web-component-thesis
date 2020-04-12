@@ -7,6 +7,7 @@ import {
   State,
   Watch,
   Element,
+  Method
 } from '@stencil/core';
 import gsap from 'gsap';
 
@@ -23,7 +24,14 @@ export class VetModal implements ComponentInterface {
     mutable:true
   }) opened:boolean;
 
+  @Prop({
+    reflect:true,
+    mutable:true
+  }) customElement;
+
   @Prop() agreeBtnLabel:string;
+
+
   @State() prevActiveElement;
   @State() currentFocus: HTMLElement;
 
@@ -52,30 +60,45 @@ export class VetModal implements ComponentInterface {
     }
   }
 
+  @Method()
+  async close(){
+    this.opened = !this.opened;
+    this.setCurrentFocus(null);
+  }
+
   // on mount search for all occurences of modal triggers
   connectedCallback(): void {
-    // Init all Modal Triggers
-    const btnArray = document.querySelectorAll('._modal-trigger');
 
-    // Init specific trigger from within shadow DOM
-    const shadowBtn = document.querySelector('vet-form').shadowRoot.querySelector('._modal-trigger');
-
-    // helper for adding event listener and setting e.target
-    const modalTriggerHandler = (e) => {
-      this.self.setAttribute('opened','');
-      this.prevActiveElement = e.currentTarget;
+    if(!!this.customElement){
+      const ce = document.querySelector(this.customElement);
+      ce.componentOnReady().then(()=>{
+        ce.shadowRoot.querySelector('._modal-trigger').addEventListener('click', (e) => {
+          this.self.setAttribute('opened', '');
+          this.prevActiveElement = e.currentTarget;
+        })
+      })
     }
 
-    !!btnArray && btnArray.forEach(el => {el.addEventListener('click', (e) => modalTriggerHandler(e))})
 
-    shadowBtn.addEventListener('click', (e) => modalTriggerHandler(e))
-  }
+      // Init all Modal Triggers
+      const btnArray = document.querySelectorAll('._modal-trigger');
+
+      // Init specific trigger from within shadow DOM
+      !!btnArray && btnArray.forEach(el => {
+        el.addEventListener('click', (e) => {
+          this.self.setAttribute('opened', '');
+          this.prevActiveElement = e.currentTarget;
+        })
+      });
+
+    }
+
 
   handleKeyPress(e){
     if (e.shiftKey){
       switch(e.key) {
         case "Escape":
-          this.close(e);
+          this.close();
           break;
         case "Tab":
           this.handleTabPrev(e);
@@ -86,7 +109,7 @@ export class VetModal implements ComponentInterface {
     } else {
       switch(e.key) {
         case "Escape":
-          this.close(e);
+          this.close();
           break;
         case "Tab":
           this.handleTabNext(e);
@@ -116,13 +139,6 @@ export class VetModal implements ComponentInterface {
     !!ref && ref.focus();
   }
 
-  close(e){
-    console.log(e);
-    this.opened = !this.opened;
-    this.setCurrentFocus(null);
-  //  return focus to the last element
-  }
-
   render() {
     return (
       <Host>
@@ -131,23 +147,25 @@ export class VetModal implements ComponentInterface {
           aria-label="Zavřít"
           class="backdropBtn"
           tabindex={!this.opened ? -1 : 0}
-          onClick={(e) => this.close(e)}></button>
+          onClick={() => this.close()}></button>
         <div class="content" aria-hidden={!this.opened}>
           <button
             type="button"
             class="close"
             ref={(el) => this.closingRef = el as HTMLButtonElement}
             aria-label="Zavřít"
-            onClick={(e) => this.close(e)}
+            onClick={() => this.close()}
             onKeyDown={(e) => this.handleKeyPress(e)}
-            tabIndex={!this.opened ? -1 : 0}>Zavřít</button>
+            tabIndex={!this.opened ? -1 : 0}>
+            <img src="/static/media/close.18445307.svg" alt="Zavřít" />
+          </button>
             <slot></slot>
           <button
             ref={(el) => this.agreeRef = el as HTMLButtonElement}
             class="agree"
             type="button"
             onKeyDown={(e) => this.handleKeyPress(e)}
-            onClick={(e) => this.close(e)}
+            onClick={() => this.close()}
             tabindex={!this.opened ? -1 : 0}
           >
             {this.agreeBtnLabel || 'Zavřít'}

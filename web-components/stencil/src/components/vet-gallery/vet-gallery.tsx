@@ -23,19 +23,19 @@ export class VetGallery implements ComponentInterface {
 
   imgArr = [
     {
-      src: "../../Assets/img/ambulance.jpg",
+      src: "/static/media/ambulance.1adec43d.jpg",
       alt: "Ambulance"
     },
     {
-      src: "../../Assets/img/cekarna1.jpg",
+      src: "/static/media/cekarna1.c26b8727.jpg",
       alt: "Čekárna"
     },
     {
-      src: "../../Assets/img/cekarna2.jpg",
+      src: "/static/media/cekarna2.737bfc99.jpg",
       alt: "Čekárna z pohledu od vchodových dveří"
     },
     {
-      src: "../../Assets/img/ordinace.jpg",
+      src: "/static/media/ordinace.a7ae9ba9.jpg",
       alt: "Ordinace s veterinářem"
     }
   ];
@@ -67,7 +67,6 @@ export class VetGallery implements ComponentInterface {
     this.opened = false;
     this.currentIndex = null;
     this.currentFocus = null;
-    // TODO
     gsap.fromTo(
       //watchout for possible error
       this.fullScreenRef,
@@ -100,7 +99,6 @@ export class VetGallery implements ComponentInterface {
       this.currentIndex=((this.currentIndex % this.imgArr.length) -1)
   };
 
-  // TODO
   handleKeyPress = e => {
     if (!!this.opened) {
       switch(e.key) {
@@ -160,6 +158,7 @@ export class VetGallery implements ComponentInterface {
 
 // for focus within component only
   setCurrentFocus(ref){
+    this.currentFocus = ref;
     !!ref && ref.focus();
   }
 
@@ -181,7 +180,7 @@ export class VetGallery implements ComponentInterface {
               onClick={this.handleClose}
               aria-label="Zavřít"
               class="backdropBtn"
-              tab-index={!this.opened ? -1 : 0}
+              tabindex={!this.opened ? -1 : 0}
             ></button>
             <div class="gallery__img-wrap">
               <img
@@ -194,28 +193,28 @@ export class VetGallery implements ComponentInterface {
               <button
                 onClick={this.handleClose}
                 aria-label="Zavřít galerii"
-                tab-index={!this.opened ? -1 : 0}
+                tabindex={!this.opened ? -1 : 0}
                 ref={(el) => this.closeRef = el as HTMLButtonElement}
               >
-                <img src="../../Assets/svg/close.svg" alt="Zavřít" />
+                <img src="/static/media/close.18445307.svg" alt="Zavřít" />
               </button>
               <button
                 aria-label="Předchozí obrázek"
                 onClick={this.handlePrev}
-                tab-index={!this.opened ? -1 : 0}
+                tabindex={!this.opened ? -1 : 0}
                 ref={(el) => this.prevRef = el as HTMLButtonElement}
                 class="left"
               >
-                <img src="../../Assets/svg/arrow.svg" alt="" />
+                <img src="/static/media/galleryArrow.be237328.svg" alt="" />
               </button>
               <button
                 onClick={this.handleNext}
-                tab-index={!this.opened ? -1 : 0}
+                tabindex={!this.opened ? -1 : 0}
                 aria-label="Další obrázek"
                 ref={(el) => this.nextRef = el as HTMLButtonElement}
                 class="right"
               >
-                <img src="../../Assets/svg/arrow.svg" alt="" />
+                <img src="/static/media/galleryArrow.be237328.svg" alt="" />
               </button>
               <p id="galleryImgLabel" class="img__label">
                 {this.opened ? this.imgArr[this.currentIndex].alt : ""}
@@ -229,7 +228,7 @@ export class VetGallery implements ComponentInterface {
             <img
               onClick={this.handleOpen}
               onKeyDown={this.handleKeyPress}
-              tab-index="0"
+              tabindex="0"
               src={el.src}
               alt={el.alt}
               key={el.src}

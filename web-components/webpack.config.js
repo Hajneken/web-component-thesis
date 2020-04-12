@@ -3,8 +3,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const stencil = require('@stencil/webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
-const libraryName = 'veterinaJSBundle'; // TODO:
+//extracts CSS to JS module or CSS file if specified
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// Minifies CSS
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const libraryName = 'veterinaJSBundle';
 const outputFile = `${libraryName}.min.js`;
 
 
@@ -32,6 +38,10 @@ module.exports = {
                 ],
             },
             {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     'css-loader',
@@ -51,12 +61,21 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        minimizer: [new OptimizeCssAssetsPlugin({})],
+    },
     plugins: [
         new stencil.StencilPlugin(),
         new uglifyJsPlugin(),
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, 'index.html'),
         }),
+        new MiniCssExtractPlugin(
+            {filename: "dist.css"}
+        ),
+        new CopyPlugin([
+            { from: 'static', to:'static' }
+        ]),
         new webpack.HotModuleReplacementPlugin()
     ],
 };

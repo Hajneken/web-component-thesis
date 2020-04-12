@@ -19,8 +19,6 @@ export namespace Components {
     }
     interface VetGallery {
     }
-    interface VetInputError {
-    }
     interface VetMap {
         "height": string;
         "provider": string;
@@ -30,6 +28,8 @@ export namespace Components {
     }
     interface VetModal {
         "agreeBtnLabel": string;
+        "close": () => Promise<void>;
+        "customElement": any;
         "opened": boolean;
     }
 }
@@ -52,12 +52,6 @@ declare global {
         prototype: HTMLVetGalleryElement;
         new (): HTMLVetGalleryElement;
     };
-    interface HTMLVetInputErrorElement extends Components.VetInputError, HTMLStencilElement {
-    }
-    var HTMLVetInputErrorElement: {
-        prototype: HTMLVetInputErrorElement;
-        new (): HTMLVetInputErrorElement;
-    };
     interface HTMLVetMapElement extends Components.VetMap, HTMLStencilElement {
     }
     var HTMLVetMapElement: {
@@ -74,7 +68,6 @@ declare global {
         "vet-form": HTMLVetFormElement;
         "vet-form-input": HTMLVetFormInputElement;
         "vet-gallery": HTMLVetGalleryElement;
-        "vet-input-error": HTMLVetInputErrorElement;
         "vet-map": HTMLVetMapElement;
         "vet-modal": HTMLVetModalElement;
     }
@@ -94,8 +87,6 @@ declare namespace LocalJSX {
     }
     interface VetGallery {
     }
-    interface VetInputError {
-    }
     interface VetMap {
         "height"?: string;
         "provider"?: string;
@@ -105,13 +96,13 @@ declare namespace LocalJSX {
     }
     interface VetModal {
         "agreeBtnLabel"?: string;
+        "customElement"?: any;
         "opened"?: boolean;
     }
     interface IntrinsicElements {
         "vet-form": VetForm;
         "vet-form-input": VetFormInput;
         "vet-gallery": VetGallery;
-        "vet-input-error": VetInputError;
         "vet-map": VetMap;
         "vet-modal": VetModal;
     }
@@ -123,7 +114,6 @@ declare module "@stencil/core" {
             "vet-form": LocalJSX.VetForm & JSXBase.HTMLAttributes<HTMLVetFormElement>;
             "vet-form-input": LocalJSX.VetFormInput & JSXBase.HTMLAttributes<HTMLVetFormInputElement>;
             "vet-gallery": LocalJSX.VetGallery & JSXBase.HTMLAttributes<HTMLVetGalleryElement>;
-            "vet-input-error": LocalJSX.VetInputError & JSXBase.HTMLAttributes<HTMLVetInputErrorElement>;
             "vet-map": LocalJSX.VetMap & JSXBase.HTMLAttributes<HTMLVetMapElement>;
             "vet-modal": LocalJSX.VetModal & JSXBase.HTMLAttributes<HTMLVetModalElement>;
         }

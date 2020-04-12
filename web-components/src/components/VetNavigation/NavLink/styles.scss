@@ -22,7 +22,6 @@ a{
     height: 100%;
     left: 0;
     top: 0;
-    // TODO active ? 0 : 1
     opacity: 1;
     z-index: 1;
     background: linear-gradient(180deg, #ffffff 0%, #eef0f4 100%);
@@ -35,7 +34,6 @@ a{
     height: 100%;
     left: 0;
     top: 0;
-    // TODO active ? 1 : 0
     opacity: 0;
     z-index: 2;
     background: linear-gradient(
@@ -65,7 +63,6 @@ a{
   }
 
   svg {
-    // TODO active ? 'var(--secondary)' : 'var(--primary)'
     fill: var(--primary);
     height: 45%;
     z-index: 3;
