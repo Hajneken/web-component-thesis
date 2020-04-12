@@ -173,6 +173,7 @@ const MessageForm = (props) => {
           <Button
           onMouseOver={validateForm}
           valid={formValid}
+          disabled={!formValid}
           >Odeslat</Button>
         </>
       ) : (

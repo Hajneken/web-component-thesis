@@ -527,6 +527,11 @@ footer .author {
     }
 }
 
+.animate{
+  opacity:0;
+  transform: translateX(100px);
+}
+
 `
 
 export default GlobalStyles

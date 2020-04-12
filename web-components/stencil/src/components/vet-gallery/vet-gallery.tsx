@@ -23,19 +23,23 @@ export class VetGallery implements ComponentInterface {
 
   imgArr = [
     {
-      src: "/static/media/ambulance.1adec43d.jpg",
+      webpSrc:"/static/media/ambulance.9b5e9493.webp",
+      src: "/static/media/ambulance.92ab6af1.jpg",
       alt: "Ambulance"
     },
     {
-      src: "/static/media/cekarna1.c26b8727.jpg",
+      webpSrc:"/static/media/cekarna1.a5169368.webp",
+      src: "/static/media/cekarna1.f7686ecf.jpg",
       alt: "Čekárna"
     },
     {
-      src: "/static/media/cekarna2.737bfc99.jpg",
+      webpSrc:"/static/media/cekarna2.a7cda99e.webp",
+      src: "/static/media/cekarna2.f2bc5752.jpg",
       alt: "Čekárna z pohledu od vchodových dveří"
     },
     {
-      src: "/static/media/ordinace.a7ae9ba9.jpg",
+      webpSrc:"/static/media/ordinace.3e2ac630.webp",
+      src: "/static/media/ordinace.38ce27d6.jpg",
       alt: "Ordinace s veterinářem"
     }
   ];
@@ -183,13 +187,17 @@ export class VetGallery implements ComponentInterface {
               tabindex={!this.opened ? -1 : 0}
             ></button>
             <div class="gallery__img-wrap">
-              <img
+              <picture>
+                <source
+                  srcSet={this.opened ? this.imgArr[this.currentIndex].webpSrc : ""}
+                  type="image/webp"/>
+                <img
                 ref={(el) => this.galleryImgFS = el as HTMLImageElement}
                 aria-labelledby="galleryImgLabel"
                 class="gallery__img-fs"
                 src={this.opened ? this.imgArr[this.currentIndex].src : ""}
                 alt={this.opened ? this.imgArr[this.currentIndex].alt : ""}
-              />
+              /></picture>
               <button
                 onClick={this.handleClose}
                 aria-label="Zavřít galerii"
@@ -225,15 +233,17 @@ export class VetGallery implements ComponentInterface {
             </div>
           </div>
           {this.imgArr.map(el => (
-            <img
-              onClick={this.handleOpen}
-              onKeyDown={this.handleKeyPress}
-              tabindex="0"
-              src={el.src}
-              alt={el.alt}
-              key={el.src}
-              class="gallery__img"
-            />
+            <picture key={el.webpSrc}>
+              <source srcSet={el.webpSrc} type="image/webp"/>
+              <img
+                class="gallery__img"
+                onClick={this.handleOpen}
+                onKeyDown={this.handleKeyPress}
+                tabindex="0"
+                src={el.src}
+                alt={el.alt}
+              />
+            </picture>
           ))}
 
       </Host>

@@ -4,7 +4,7 @@ import StyledTimetable from './styled'
 const Timetable = () => {
 
     return(
-            <StyledTimetable className="timetable">
+            <StyledTimetable className="timetable animate">
                 <h2>Ordinační hodiny</h2>
                 <table className="timetable__week">
                  <tbody>

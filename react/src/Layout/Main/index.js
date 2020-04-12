@@ -14,15 +14,23 @@ import bus from   '../../Assets/svg/bus.svg'
 
 // Hero
 import hero from '../../Assets/img/zahlavi.png'
+import webpHero from '../../Assets/img/webp/zahlavi.webp'
 
 //JPG
 import about from '../../Assets/img/veterinar.jpg'
+import webpAbout from '../../Assets/img/webp/veterinar.webp'
 
 //Gallery
 import ambulance from "../../Assets/img/ambulance.jpg";
 import room1 from "../../Assets/img/cekarna1.jpg";
 import room2 from "../../Assets/img/cekarna2.jpg";
 import ordinace from "../../Assets/img/ordinace.jpg";
+
+//WebP Gallery
+import webpAmbulance from "../../Assets/img/webp/ambulance.webp";
+import webpRoom1 from "../../Assets/img/webp/cekarna1.webp";
+import webpRoom2 from "../../Assets/img/webp/cekarna2.webp";
+import webpOrdinace from "../../Assets/img/webp/ordinace.webp";
 
 
 import Terms from "../../components/Terms";
@@ -40,26 +48,32 @@ const Main = () => {
         setModalBtn(e.target);
     }
 
-    const galleryImages =[
+    const galleryImages = [
         {
+            webpSrc: webpAmbulance,
           src: ambulance,
           alt: "Ambulance"
         },
         {
+            webpSrc: webpRoom1,
           src: room1,
           alt: "Čekárna"
         },
         {
+            webpSrc: webpRoom2,
           src: room2,
           alt: "Čekárna z pohledu od vchodových dveří"
         },
         {
+            webpSrc: webpOrdinace,
           src: ordinace,
           alt: "Ordinace s veterinářem"
         }
       ];
       
     useEffect(()=>{
+        // --for future exports--
+        // console.log(JSON.stringify(galleryImages));
           gsap.fromTo(['.hero-description__header', '.hero-description__subheader'], {opacity:0, y:50}, {opacity:1, y:0, stagger:0.6, duration:2})
       }, [])
 
@@ -70,13 +84,16 @@ const Main = () => {
                
                 className="hero-description"><h1 className="hero-description__header">Veterinární ambulance na máji</h1>
                     <p className="hero-description__subheader">Prevence a léčba malých zvířat</p></div>
+                <picture className="hero">
+                    <source srcSet={webpHero} type="image/webp"/>
                     <img className="hero" src={hero} alt=''/>
+                </picture>
             </Section>
             <Section id="hours">
                 <Timetable />
             </Section>
             <Section id="about">
-                <article>
+                <article className="animate">
                     <div>
                         <h2>MVDr. Dana Zemancová</h2>
                         <p>Již od roku 1995 poskytuje odbornou preventivní péči a léčbu <strong>psů</strong>,
@@ -85,14 +102,17 @@ const Main = () => {
                             Dále poskytujeme <strong>laboratorní</strong> a <strong>mikroskopická</strong> vyšetření a drobné
                             <strong> chirurgické zákroky</strong>.</p></div>
                     <div className="about__img">
-                        <img src={about} alt="Veterinářka Dana Zemancová" />
+                        <picture>
+                            <source srcSet={webpAbout} type="image/webp" />
+                            <img src={about} alt="Veterinářka Dana Zemancová"/>
+                        </picture>
                     </div>
                 </article>
             </Section>
             <Section id="contact">
                 <div className="contact-grid">
                     <h2 className="contact-header">Kontakt</h2>
-                    <div className="contact-info">
+                    <div className="contact-info animate">
                         <a className="link contact-info__link"
                            href="tel:+420385511793">
                         <img className="svg-icon"

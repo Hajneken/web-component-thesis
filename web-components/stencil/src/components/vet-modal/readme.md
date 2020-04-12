@@ -10,6 +10,7 @@
 | Property        | Attribute         | Description | Type      | Default     |
 | --------------- | ----------------- | ----------- | --------- | ----------- |
 | `agreeBtnLabel` | `agree-btn-label` |             | `string`  | `undefined` |
+| `customElement` | `custom-element`  |             | `any`     | `undefined` |
 | `opened`        | `opened`          |             | `boolean` | `undefined` |
 
 

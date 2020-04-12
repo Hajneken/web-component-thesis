@@ -20,6 +20,7 @@ export const StyledGallery = styled.div`
             background: rgba(0,0,0,0.7);
             
             .backdropBtn{
+              border-radius: 0;
               width: 100%;
               height: 100%;
               background: transparent;
@@ -46,6 +47,7 @@ export const StyledGallery = styled.div`
             }
             
             .gallery__img-fs{
+            display: block;
             height: auto;
             width: 88vw;
             max-height: 80vh;

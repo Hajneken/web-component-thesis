@@ -148,6 +148,24 @@ class VetNavigation extends HTMLElement{
         // vrať pole všech elementů s targetId a pro každý prvek pozoruj
         links.map(e => document.getElementById(e.targetId))
             .forEach(section => observer.observe(section));
+
+        const observer2 = new IntersectionObserver(
+            (entries, observer2) =>{
+                entries.forEach(entry => {
+                    entry.isIntersecting && gsap.to(
+                        entry.target,
+                        { opacity: 1, x: 0, ease: "back.out(1.4)", duration: 1.25 }
+                    );
+                });
+            },
+            {
+                rootMargin: "0px 0px",
+                threshold: 0.5
+            }
+        )
+
+        const animArr = document.querySelectorAll('.animate');
+        animArr.forEach(el => observer2.observe(el));
     }
 
     setActiveLink(index){

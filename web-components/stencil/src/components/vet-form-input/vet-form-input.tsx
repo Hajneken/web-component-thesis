@@ -116,7 +116,7 @@ export class VetFormInput implements ComponentInterface {
         <label htmlFor={this.fieldId}>
           <slot/>
         </label>
-        {this.invalid &&
+        {this.invalid && this.value !== '' &&
         <div class="error"
              aria-live="polite">
           {this.errorMsg || `Pole musí obsahovat ${this.minChars} až ${this.maxChars} znaků.`}

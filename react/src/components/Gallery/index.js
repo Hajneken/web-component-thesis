@@ -178,12 +178,17 @@ const Gallery = props => {
             tabIndex={!opened ? -1 : 0}
             ></button>
           <div className="gallery__img-wrap">
-          <img
-              aria-labelledby="galleryImgLabel"
-              className="gallery__img-fs"
-              src={opened ? imgArr[currentIndex].src : ""}
-              alt={opened ? imgArr[currentIndex].alt : ""}
-            />
+              <picture>
+                  <source
+                      srcSet={opened ? imgArr[currentIndex].webpSrc : ""}
+                      type="image/webp"/>
+                  <img
+                  aria-labelledby="galleryImgLabel"
+                  className="gallery__img-fs"
+                  src={opened ? imgArr[currentIndex].src : ""}
+                  alt={opened ? imgArr[currentIndex].alt : ""}
+              />
+              </picture>
             <button
               onClick={handleClose}
               aria-label="Zavřít galerii"
@@ -219,15 +224,16 @@ const Gallery = props => {
           </div>
         </div>
         {imgArr.map(el => (
-          <img
-            onClick={handleOpen}
-            onKeyDown={handleKeyPress}
-            tabIndex="0"
-            src={el.src}
-            alt={el.alt}
-            key={el.src}
-            className="gallery__img"
-          />
+            <picture key={el.webpSrc}>
+                <source srcSet={el.webpSrc} type="image/webp"/>
+                <img
+                    className="gallery__img"
+                    onClick={handleOpen}
+                    onKeyDown={handleKeyPress}
+                tabIndex="0"
+                src={el.src}
+                alt={el.alt}
+            /></picture>
         ))}
       </StyledGallery>
     </>

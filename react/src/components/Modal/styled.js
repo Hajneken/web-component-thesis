@@ -12,6 +12,7 @@ export const Backdrop = styled.div`
             opacity: 0;
             
             .backdropBtn{
+              border-radius: 0;
               width: 100%;
               height: 100%;
               background: transparent;
