@@ -35,7 +35,7 @@ export class VetModal implements ComponentInterface {
   @State() prevActiveElement;
   @State() currentFocus: HTMLElement;
 
-  @Element() self: HTMLElement;
+  @Element() selfie: HTMLElement;
 
   agreeRef!: HTMLButtonElement;
   closingRef!: HTMLButtonElement;
@@ -45,7 +45,7 @@ export class VetModal implements ComponentInterface {
   toggleModal(){
     if(this.opened){
       gsap.fromTo(
-        this.self,
+        this.selfie,
         { opacity: 0, y: "100%" },
         { opacity: 1, y: 0, ease: "power4.out", duration: 0.3 });
       document.body.style.overflow = "hidden";
@@ -54,7 +54,7 @@ export class VetModal implements ComponentInterface {
       document.body.style.overflow = "";
       this.prevActiveElement.focus()
       gsap.to(
-        this.self,
+        this.selfie,
         { opacity: 0, y: "-100%", ease: "power4.in", duration: 0.3 }
       )
     }
@@ -73,7 +73,7 @@ export class VetModal implements ComponentInterface {
       const ce = document.querySelector(this.customElement);
       ce.componentOnReady().then(()=>{
         ce.shadowRoot.querySelector('._modal-trigger').addEventListener('click', (e) => {
-          this.self.setAttribute('opened', '');
+          this.selfie.setAttribute('opened', '');
           this.prevActiveElement = e.currentTarget;
         })
       })
@@ -86,7 +86,7 @@ export class VetModal implements ComponentInterface {
       // Init specific trigger from within shadow DOM
       !!btnArray && btnArray.forEach(el => {
         el.addEventListener('click', (e) => {
-          this.self.setAttribute('opened', '');
+          this.selfie.setAttribute('opened', '');
           this.prevActiveElement = e.currentTarget;
         })
       });
