@@ -40,7 +40,6 @@ const Gallery = props => {
   const initIndex = target => {
     for (let i = 0; i < imgArr.length; i++) {
       if (imgArr[i].alt === target.alt) {
-          // console.log(i);
         return i;
       } else {
       }
