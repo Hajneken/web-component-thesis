@@ -1,3 +1,11 @@
+# Getting started
+
+1. install [yarn](https://yarnpkg.com)
+2. run `yarn` to install dependencies
+3. Follow steps outlined below
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
